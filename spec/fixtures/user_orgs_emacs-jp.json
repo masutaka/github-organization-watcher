@@ -1,0 +1,15 @@
+[
+  {
+    "login": "emacs-jp",
+    "id": 1054963,
+    "url": "https://api.github.com/orgs/emacs-jp",
+    "repos_url": "https://api.github.com/orgs/emacs-jp/repos",
+    "events_url": "https://api.github.com/orgs/emacs-jp/events",
+    "hooks_url": "https://api.github.com/orgs/emacs-jp/hooks",
+    "issues_url": "https://api.github.com/orgs/emacs-jp/issues",
+    "members_url": "https://api.github.com/orgs/emacs-jp/members{/member}",
+    "public_members_url": "https://api.github.com/orgs/emacs-jp/public_members{/member}",
+    "avatar_url": "https://avatars.githubusercontent.com/u/12345678?v=3",
+    "description": null
+  }
+]
