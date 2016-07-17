@@ -3,15 +3,14 @@ feature 'Organizations' do
 
   given(:endpoint) { 'https://api.github.com/user/orgs' }
 
-  context 'given a user who belongs to `emacs-jp` and `feedforce`' do
+  context 'given a user who belongs to `emacs-jp`' do
     background do
-      stub_request_get(endpoint, fixture('user_orgs_emacs-jp-and-feedforce.json'))
+      stub_request_get(endpoint, fixture('user_orgs_emacs-jp.json'))
     end
 
     scenario 'shows the organizations' do
       visit '/organizations'
-      expect(page).to have_content 'emacs-jp'
-      expect(page).to have_content 'feedforce'
+      expect(page).to have_link 'emacs-jp', href: '/organizations/emacs-jp/repositories'
     end
   end
 
@@ -23,7 +22,6 @@ feature 'Organizations' do
     scenario 'doesnot show any organizations' do
       visit '/organizations'
       expect(page).to_not have_content 'emacs-jp'
-      expect(page).to_not have_content 'feedforce'
     end
   end
 end

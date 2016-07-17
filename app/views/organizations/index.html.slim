@@ -3,4 +3,4 @@ h1 Organizations
 - @organizations.each do |o|
   ul
     li
-      = o.login
+      = link_to o.login, organization_repositories_path(o.login)
