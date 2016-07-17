@@ -4,7 +4,7 @@ RSpec.describe Organization, type: :model do
 
     context 'given a user who belongs to `emacs-jp` and `feedforce`' do
       before do
-        stub_request_get(endpoint, fixture('user_orgs_emacs-jp-and-feedforce.json'))
+        stub_request_get(endpoint, fixture('user_orgs_emacs-jp_and_feedforce.json'))
       end
 
       it 'is valid' do
