@@ -4,7 +4,9 @@ feature 'Organizations' do
   given(:endpoint) { 'https://api.github.com/user/orgs' }
 
   context 'given a user who belongs to `emacs-jp` and `feedforce`' do
-    background { webmock_get(endpoint, fixture('user_orgs_emacs-jp-and-feedforce.json')) }
+    background do
+      stub_request_get(endpoint, fixture('user_orgs_emacs-jp-and-feedforce.json'))
+    end
 
     scenario 'shows the organizations' do
       visit '/organizations'
@@ -14,7 +16,9 @@ feature 'Organizations' do
   end
 
   context 'given a user who doesnot belong to any organizations' do
-    background { webmock_get(endpoint, fixture('user_orgs_empty.json')) }
+    background do
+      stub_request_get(endpoint, fixture('user_orgs_empty.json'))
+    end
 
     scenario 'doesnot show any organizations' do
       visit '/organizations'
