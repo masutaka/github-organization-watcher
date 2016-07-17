@@ -1,6 +1,17 @@
-h1 #{@organization_name} repositories
+.container
+  h1 #{@organization_name} repositories
 
-- @repositories.each do |r|
-  ul
-    li
-      = r.name
+  .page-header
+    ol.breadcrumb
+      li
+        = link_to 'top', '/'
+      li
+        = link_to 'organizations', organizations_path
+      li.active
+        = @organization_name
+
+  .repositories
+    - @repositories.each do |r|
+      ul
+        li
+          = r.name
