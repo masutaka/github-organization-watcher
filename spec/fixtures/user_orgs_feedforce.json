@@ -1,0 +1,15 @@
+[
+  {
+    "login": "feedforce",
+    "id": 12345679,
+    "url": "https://api.github.com/orgs/feedforce",
+    "repos_url": "https://api.github.com/orgs/feedforce/repos",
+    "events_url": "https://api.github.com/orgs/feedforce/events",
+    "hooks_url": "https://api.github.com/orgs/feedforce/hooks",
+    "issues_url": "https://api.github.com/orgs/feedforce/issues",
+    "members_url": "https://api.github.com/orgs/feedforce/members{/member}",
+    "public_members_url": "https://api.github.com/orgs/feedforce/public_members{/member}",
+    "avatar_url": "https://avatars.githubusercontent.com/u/12345679?v=3",
+    "description": null
+  }
+]
