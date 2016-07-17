@@ -1,6 +1,15 @@
-h1 Organizations
+.container
+  h1 Organizations
 
-- @organizations.each do |o|
-  ul
-    li
-      = link_to o.login, organization_repositories_path(o.login)
+  .page-header
+    ol.breadcrumb
+      li
+        = link_to 'top', '/'
+      li.active
+        | organizations
+
+  .organizations
+    - @organizations.each do |o|
+      ul
+        li
+          = link_to o.login, organization_repositories_path(o.login)
