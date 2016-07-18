@@ -21,7 +21,9 @@ RSpec.describe Organization, type: :model do
         stub_request_get(endpoint, fixture('user_orgs_empty.json'))
       end
 
-      it { expect(Organization.all).to be_empty }
+      it 'is empty' do
+        expect(Organization.all).to be_empty
+      end
     end
   end
 
@@ -47,7 +49,9 @@ RSpec.describe Organization, type: :model do
         stub_request_get(endpoint, fixture('orgs_emacs-jp_0repos.json'))
       end
 
-      it { expect(Organization.repositories('emacs-jp')).to be_empty }
+      it 'is empty' do
+        expect(Organization.repositories('emacs-jp')).to be_empty
+      end
     end
   end
 end
