@@ -21,7 +21,37 @@ RSpec.describe Organization, type: :model do
         stub_request_get(endpoint, fixture('user_orgs_empty.json'))
       end
 
-      it { expect(Organization.all).to be_empty }
+      it 'is empty' do
+        expect(Organization.all).to be_empty
+      end
+    end
+  end
+
+  describe '.repositories' do
+    let(:endpoint) { 'https://api.github.com/orgs/emacs-jp/repos' }
+
+    context 'given a organization `emacs-jp` with 2 repositories' do
+      before do
+        stub_request_get(endpoint, fixture('orgs_emacs-jp_2repos.json'))
+      end
+
+      it 'is valid' do
+        expect(Organization.repositories('emacs-jp')).
+          to match [
+               have_attributes(name: 'emacs-jp.github.com'),
+               have_attributes(name: 'init-loader'),
+             ]
+      end
+    end
+
+    context 'given a organization `emacs-jp` without repositories' do
+      before do
+        stub_request_get(endpoint, fixture('orgs_emacs-jp_0repos.json'))
+      end
+
+      it 'is empty' do
+        expect(Organization.repositories('emacs-jp')).to be_empty
+      end
     end
   end
 end
