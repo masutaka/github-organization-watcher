@@ -4,6 +4,10 @@ class Organization
       client.organizations
     end
 
+    def repositories(name)
+      client.organization_repositories(name)
+    end
+
     private
 
     def client
