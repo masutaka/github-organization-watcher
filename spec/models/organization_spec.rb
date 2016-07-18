@@ -4,7 +4,7 @@ RSpec.describe Organization, type: :model do
 
     context 'given a user who belongs to `emacs-jp` and `doramichan`' do
       before do
-        stub_request_get(endpoint, fixture('user_orgs_emacs-jp_and_doramichan.json'))
+        stub_request_get_200(endpoint, fixture('user_orgs_emacs-jp_and_doramichan.json'))
       end
 
       it 'is valid' do
@@ -18,7 +18,7 @@ RSpec.describe Organization, type: :model do
 
     context 'given a user who doesnot belong to any organizations' do
       before do
-        stub_request_get(endpoint, fixture('user_orgs_empty.json'))
+        stub_request_get_200(endpoint, fixture('user_orgs_empty.json'))
       end
 
       it 'is empty' do
@@ -32,7 +32,7 @@ RSpec.describe Organization, type: :model do
 
     context 'given a organization `emacs-jp` with 2 repositories' do
       before do
-        stub_request_get(endpoint, fixture('orgs_emacs-jp_2repos.json'))
+        stub_request_get_200(endpoint, fixture('orgs_emacs-jp_2repos.json'))
       end
 
       it 'is valid' do
@@ -46,7 +46,7 @@ RSpec.describe Organization, type: :model do
 
     context 'given a organization `emacs-jp` without repositories' do
       before do
-        stub_request_get(endpoint, fixture('orgs_emacs-jp_0repos.json'))
+        stub_request_get_200(endpoint, fixture('orgs_emacs-jp_0repos.json'))
       end
 
       it 'is empty' do
@@ -57,14 +57,14 @@ RSpec.describe Organization, type: :model do
 
   describe '.repositories_subscription' do
     before do
-      stub_request_get('https://api.github.com/orgs/emacs-jp/repos',
-                       fixture('orgs_emacs-jp_1repo.json'))
+      stub_request_get_200('https://api.github.com/orgs/emacs-jp/repos',
+                           fixture('orgs_emacs-jp_1repo.json'))
     end
 
     context 'given a watching repository' do
       before do
-        stub_request_get('https://api.github.com/repos/emacs-jp/emacs-jp.github.com/subscription',
-                         fixture('repos_emacs-jp_watching_1repo.json'))
+        stub_request_get_200('https://api.github.com/repos/emacs-jp/emacs-jp.github.com/subscription',
+                             fixture('repos_emacs-jp_watching_1repo.json'))
       end
 
       it 'is valid' do
@@ -88,8 +88,8 @@ RSpec.describe Organization, type: :model do
 
     context 'given a ignoring repository' do
       before do
-        stub_request_get('https://api.github.com/repos/emacs-jp/emacs-jp.github.com/subscription',
-                         fixture('repos_emacs-jp_ignoring_1repo.json'))
+        stub_request_get_200('https://api.github.com/repos/emacs-jp/emacs-jp.github.com/subscription',
+                             fixture('repos_emacs-jp_ignoring_1repo.json'))
       end
 
       it 'is valid' do

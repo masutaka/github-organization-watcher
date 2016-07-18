@@ -5,7 +5,7 @@ feature 'Organizations' do
 
   context 'given a user who belongs to `emacs-jp`' do
     background do
-      stub_request_get(endpoint, fixture('user_orgs_emacs-jp.json'))
+      stub_request_get_200(endpoint, fixture('user_orgs_emacs-jp.json'))
     end
 
     scenario 'shows the organizations' do
@@ -16,7 +16,7 @@ feature 'Organizations' do
 
   context 'given a user who doesnot belong to any organizations' do
     background do
-      stub_request_get(endpoint, fixture('user_orgs_empty.json'))
+      stub_request_get_200(endpoint, fixture('user_orgs_empty.json'))
     end
 
     scenario 'doesnot show any organizations' do

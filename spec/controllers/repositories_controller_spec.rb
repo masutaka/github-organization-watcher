@@ -1,8 +1,8 @@
 RSpec.describe RepositoriesController, type: :controller do
   describe '#index' do
     before do
-      stub_request_get('https://api.github.com/orgs/emacs-jp/repos',
-                       fixture('orgs_emacs-jp_0repos.json'))
+      stub_request_get_200('https://api.github.com/orgs/emacs-jp/repos',
+                           fixture('orgs_emacs-jp_0repos.json'))
     end
 
     it 'is `200 OK`' do
