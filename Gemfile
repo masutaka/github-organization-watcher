@@ -54,6 +54,7 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'pry-byebug'
   gem 'webmock'
 end
 
