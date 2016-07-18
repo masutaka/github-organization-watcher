@@ -54,49 +54,4 @@ RSpec.describe Organization, type: :model do
       end
     end
   end
-
-  describe '.repositories_subscription' do
-    before do
-      stub_request_get_200('https://api.github.com/orgs/emacs-jp/repos',
-                           fixture('orgs_emacs-jp_1repo.json'))
-    end
-
-    context 'given a watching repository' do
-      before do
-        stub_request_get_200('https://api.github.com/repos/emacs-jp/emacs-jp.github.com/subscription',
-                             fixture('repos_emacs-jp_watching_1repo.json'))
-      end
-
-      it 'is valid' do
-        result = Organization.repositories_subscription('emacs-jp')
-        expect(result['emacs-jp.github.com'][:subscribed]).to be_truthy
-        expect(result['emacs-jp.github.com'][:ignored]).to be_falsey
-      end
-    end
-
-    context 'given a unwatching repository' do
-      before do
-        stub_request_get_404('https://api.github.com/repos/emacs-jp/emacs-jp.github.com/subscription',
-                             fixture('repos_emacs-jp_unwatching_1repo.json'))
-      end
-
-      it 'is valid' do
-        result = Organization.repositories_subscription('emacs-jp')
-        expect(result['emacs-jp.github.com']).to be_nil
-      end
-    end
-
-    context 'given a ignoring repository' do
-      before do
-        stub_request_get_200('https://api.github.com/repos/emacs-jp/emacs-jp.github.com/subscription',
-                             fixture('repos_emacs-jp_ignoring_1repo.json'))
-      end
-
-      it 'is valid' do
-        result = Organization.repositories_subscription('emacs-jp')
-        expect(result['emacs-jp.github.com'][:subscribed]).to be_falsey
-        expect(result['emacs-jp.github.com'][:ignored]).to be_truthy
-      end
-    end
-  end
 end
