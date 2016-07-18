@@ -15,7 +15,9 @@ class Repository
         end
       end
 
-      results
+      results.sort do |a, b|
+        a.repo <=> b.repo
+      end
     end
 
     private
