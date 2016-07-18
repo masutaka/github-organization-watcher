@@ -1,11 +1,21 @@
 class Repository
   class << self
+    THREAD_NUM = 10
+
     def subscriptions_by_organization(name)
       agent = Sawyer::Agent.new('https://example.com')
+      results = []
+      mutex = Mutex::new
 
-      repositories(name).map do |r|
-        Sawyer::Resource.new(agent, repo: r.name, condition: condition(r.full_name))
+      Parallel.each(repositories(name), in_threads: THREAD_NUM) do |r|
+        condition = condition(r.full_name)
+
+        mutex.synchronize do
+          results << Sawyer::Resource.new(agent, repo: r.name, condition: condition)
+        end
       end
+
+      results
     end
 
     private
