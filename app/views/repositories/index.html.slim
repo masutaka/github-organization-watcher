@@ -11,7 +11,7 @@
         = @organization_name
 
   .repositories
-    - @repositories.each do |r|
+    - @subscriptions.each do |s|
       ul
         li
-          = r.name
+          = "#{s.repo}, #{s.condition}"
