@@ -32,6 +32,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'octokit'
+gem 'parallel'
 gem 'slim-rails'
 
 group :development, :test do
