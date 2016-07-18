@@ -3,7 +3,7 @@ class Repository
     THREAD_NUM = 10
 
     def subscriptions_by_organization(name)
-      agent = Sawyer::Agent.new('https://example.com')
+      agent = Sawyer::Agent.new(Settings.endpoint)
       results = []
       mutex = Mutex::new
 
