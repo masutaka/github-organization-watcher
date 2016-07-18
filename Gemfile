@@ -33,6 +33,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'octokit'
 gem 'parallel'
+gem 'settingslogic'
 gem 'slim-rails'
 
 group :development, :test do

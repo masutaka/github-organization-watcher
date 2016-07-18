@@ -1,0 +1,12 @@
+defaults: &defaults
+  endpoint:
+    https://github-organization-watcher.herokuapp.com/
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
