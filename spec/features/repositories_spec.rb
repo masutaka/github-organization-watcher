@@ -14,8 +14,8 @@ feature 'Repositories' do
     scenario 'shows the repositories and the conditions' do
       visit '/organizations/emacs-jp/repositories'
       expect(page).to have_content 'emacs-jp repositories'
-      expect(page).to have_content 'emacs-jp.github.com, watching'
-      expect(page).to have_content 'init-loader, unwatching'
+      expect(find(:css, '#emacs-jp-github-com-watching')).to be_checked
+      expect(find(:css, '#init-loader-unwatching')).to be_checked
     end
   end
 
@@ -28,8 +28,8 @@ feature 'Repositories' do
     scenario 'doesnot shows any repositories and conditions' do
       visit '/organizations/emacs-jp/repositories'
       expect(page).to have_content 'emacs-jp repositories'
-      expect(page).to_not have_content 'emacs-jp.github.com, watching'
-      expect(page).to_not have_content 'init-loader, unwatching'
+      expect(page).to_not have_content 'emacs-jp.github.com'
+      expect(page).to_not have_content 'init-loader'
     end
   end
 end

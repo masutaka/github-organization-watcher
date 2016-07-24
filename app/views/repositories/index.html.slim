@@ -16,11 +16,11 @@
         = s.repo
         .btn-group.conditions data-toggle='buttons'
           label.btn.btn-primary class=('active' if s.condition == :unwatching)
-            input type='radio' name="#{s.repo}-conditions" id="#{s.repo}-unwatching" autocomplete='off' checked=(s.condition == :unwatching)
+            input type='radio' name="#{s.repo}-conditions" id="#{s.repo.gsub(/\./, '-')}-unwatching" autocomplete='off' checked=(s.condition == :unwatching)
               | Unwatching
           label.btn.btn-primary class=('active' if s.condition == :watching)
-            input type='radio' name="#{s.repo}-conditions" id="#{s.repo}-watching" autocomplete='off' checked=(s.condition == :watching)
+            input type='radio' name="#{s.repo}-conditions" id="#{s.repo.gsub(/\./, '-')}-watching" autocomplete='off' checked=(s.condition == :watching)
               | Watching
           label.btn.btn-primary class=('active' if s.condition == :ignoring)
-            input type='radio' name="#{s.repo}-conditions" id="#{s.repo}-ignoring" autocomplete='off' checked=(s.condition == :ignoring)
+            input type='radio' name="#{s.repo}-conditions" id="#{s.repo.gsub(/\./, '-')}-ignoring" autocomplete='off' checked=(s.condition == :ignoring)
               | Ignoring
