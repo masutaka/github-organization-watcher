@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+
+.repository {
+  position: relative;
+  padding: 15px;
+  margin: 0 0 15px 0;
+  border-style: solid;
+  border-color: #ddd;
+  border-width: 1px;
+  border-radius: 4px 4px 0 0;
+}
+
+.repository .conditions {
+  float: right;
+}
