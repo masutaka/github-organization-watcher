@@ -1,4 +1,4 @@
-RSpec.describe RepositoriesController, type: :controller do
+RSpec.describe ReposController, type: :controller do
   describe '#index' do
     before do
       stub_request_get_200('https://api.github.com/orgs/emacs-jp/repos',

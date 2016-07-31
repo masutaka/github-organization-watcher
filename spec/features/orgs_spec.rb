@@ -10,7 +10,7 @@ feature 'Orgs' do
 
     scenario 'shows the orgs' do
       visit '/orgs'
-      expect(page).to have_link 'emacs-jp', href: '/orgs/emacs-jp/repositories'
+      expect(page).to have_link 'emacs-jp', href: '/orgs/emacs-jp/repos'
     end
   end
 

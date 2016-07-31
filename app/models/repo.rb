@@ -1,4 +1,4 @@
-class Repository
+class Repo
   class << self
     THREAD_NUM = 10
 
@@ -7,7 +7,7 @@ class Repository
       results = []
       mutex = Mutex::new
 
-      Parallel.each(repositories(name), in_threads: THREAD_NUM) do |r|
+      Parallel.each(repos(name), in_threads: THREAD_NUM) do |r|
         condition = condition(r.full_name)
 
         mutex.synchronize do
@@ -20,7 +20,7 @@ class Repository
 
     private
 
-    def repositories(org_name)
+    def repos(org_name)
       client.organization_repositories(org_name)
     end
 
