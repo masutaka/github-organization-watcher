@@ -5,4 +5,11 @@ RSpec.describe SubscriptionsController, type: :controller do
       expect(response.status).to eq 201
     end
   end
+
+  describe '#destroy' do
+    it 'is `200 OK`' do
+      delete :destroy, params: { owner: 'emacs-jp', repo: 'emacs-jp.github.com' }
+      expect(response.status).to eq 200
+    end
+  end
 end
