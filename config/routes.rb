@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   end
 
   scope '/repos/:owner/:repo', constraints: { repo: /[A-Za-z0-9_.-]+/ } do
-    resource :subscription, only: [:update]
+    resource :subscription, only: [:update, :destroy]
   end
 end
