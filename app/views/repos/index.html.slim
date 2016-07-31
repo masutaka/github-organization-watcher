@@ -12,15 +12,15 @@
 
   .repos
     - @subscriptions.each do |s|
-      .repo
+      .repo(id="#{s.repo.gsub(/\./, '-')}")
         = s.repo
         .btn-group.conditions data-toggle='buttons'
-          label.btn.btn-primary class=('active' if s.condition == :unwatching)
-            input type='radio' name="#{s.repo}-conditions" id="#{s.repo.gsub(/\./, '-')}-unwatching" autocomplete='off' checked=(s.condition == :unwatching)
+          label.btn.btn-primary.unwatching class=('active' if s.condition == :unwatching)
+            input.unwatching type='radio' name="#{s.repo}-conditions" autocomplete='off' checked=(s.condition == :unwatching)
               | Unwatching
           label.btn.btn-primary class=('active' if s.condition == :watching)
-            input type='radio' name="#{s.repo}-conditions" id="#{s.repo.gsub(/\./, '-')}-watching" autocomplete='off' checked=(s.condition == :watching)
+            input.watching type='radio' name="#{s.repo}-conditions" autocomplete='off' checked=(s.condition == :watching)
               | Watching
           label.btn.btn-primary class=('active' if s.condition == :ignoring)
-            input type='radio' name="#{s.repo}-conditions" id="#{s.repo.gsub(/\./, '-')}-ignoring" autocomplete='off' checked=(s.condition == :ignoring)
+            input.ignoring type='radio' name="#{s.repo}-conditions" autocomplete='off' checked=(s.condition == :ignoring)
               | Ignoring
