@@ -1,8 +1,9 @@
 RSpec.describe SubscriptionsController, type: :controller do
+  let(:github_endpoint) { 'https://api.github.com/repos/emacs-jp/emacs-jp.github.com/subscription' }
+
   describe '#update' do
     before do
-      stub_request_put_200('https://api.github.com/repos/emacs-jp/emacs-jp.github.com/subscription',
-                           fixture('subscription_watch.json'))
+      stub_request_put_200(github_endpoint, fixture('subscription_watch.json'))
     end
 
     it 'is `201 Created`' do
@@ -13,8 +14,7 @@ RSpec.describe SubscriptionsController, type: :controller do
 
   describe '#destroy' do
     before do
-      stub_request_delete_200('https://api.github.com/repos/emacs-jp/emacs-jp.github.com/subscription',
-                              fixture('subscription_unwatch.json'))
+      stub_request_delete_200(github_endpoint, fixture('subscription_unwatch.json'))
     end
 
     it 'is `200 OK`' do
