@@ -1,11 +1,11 @@
 feature 'Orgs' do
   include_context 'Capybara Features'
 
-  given(:endpoint) { 'https://api.github.com/user/orgs' }
+  given(:github_endpoint) { 'https://api.github.com/user/orgs' }
 
   context 'given a user who belongs to `emacs-jp`' do
     background do
-      stub_request_get_200(endpoint, fixture('user_orgs_emacs-jp.json'))
+      stub_request_get_200(github_endpoint, fixture('user_orgs_emacs-jp.json'))
     end
 
     scenario 'shows the orgs' do
@@ -16,7 +16,7 @@ feature 'Orgs' do
 
   context 'given a user who doesnot belong to any orgs' do
     background do
-      stub_request_get_200(endpoint, fixture('user_orgs_empty.json'))
+      stub_request_get_200(github_endpoint, fixture('user_orgs_empty.json'))
     end
 
     scenario 'doesnot show any orgs' do

@@ -3,4 +3,8 @@ Rails.application.routes.draw do
   resources :orgs, only: [:index], param: :name do
     resources :repos, only: [:index]
   end
+
+  scope '/repos/:owner/:repo', constraints: { repo: /[A-Za-z0-9_.-]+/ } do
+    resource :subscription, only: [:update, :destroy]
+  end
 end
