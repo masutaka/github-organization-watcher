@@ -8,8 +8,8 @@
       li.active
         | organizations
 
-  .organizations
-    - @organizations.each do |o|
+  .orgs
+    - @orgs.each do |o|
       ul
         li
-          = link_to o.login, organization_repositories_path(o.login)
+          = link_to o.login, org_repositories_path(o.login)

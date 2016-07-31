@@ -1,6 +1,6 @@
-class OrganizationsController < ApplicationController
+class OrgsController < ApplicationController
   def index
-    @organizations = client.organizations
+    @orgs = client.organizations
   end
 
   private

@@ -1,7 +1,7 @@
 feature 'Repositories' do
   include_context 'Capybara Features'
 
-  context 'given a organization `emacs-jp` with 2 repositories' do
+  context 'given a org `emacs-jp` with 2 repositories' do
     background do
       stub_request_get_200('https://api.github.com/orgs/emacs-jp/repos',
                            fixture('orgs_emacs-jp_2repos.json'))
@@ -12,21 +12,21 @@ feature 'Repositories' do
     end
 
     scenario 'shows the repositories and the conditions' do
-      visit '/organizations/emacs-jp/repositories'
+      visit '/orgs/emacs-jp/repositories'
       expect(page).to have_content 'emacs-jp repositories'
       expect(find(:css, '#emacs-jp-github-com-watching')).to be_checked
       expect(find(:css, '#init-loader-unwatching')).to be_checked
     end
   end
 
-  context 'given a organization `emacs-jp` without repositories' do
+  context 'given a org `emacs-jp` without repositories' do
     background do
       stub_request_get_200('https://api.github.com/orgs/emacs-jp/repos',
                            fixture('orgs_emacs-jp_0repos.json'))
     end
 
     scenario 'doesnot shows any repositories and conditions' do
-      visit '/organizations/emacs-jp/repositories'
+      visit '/orgs/emacs-jp/repositories'
       expect(page).to have_content 'emacs-jp repositories'
       expect(page).to_not have_content 'emacs-jp.github.com'
       expect(page).to_not have_content 'init-loader'

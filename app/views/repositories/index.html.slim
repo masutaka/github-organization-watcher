@@ -1,14 +1,14 @@
 .container
-  h1 #{@organization_name} repositories
+  h1 #{@org_name} repositories
 
   .page-header
     ol.breadcrumb
       li
         = link_to 'top', '/'
       li
-        = link_to 'organizations', organizations_path
+        = link_to 'organizations', orgs_path
       li.active
-        = @organization_name
+        = @org_name
 
   .repositories
     - @subscriptions.each do |s|

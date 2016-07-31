@@ -6,7 +6,7 @@ RSpec.describe RepositoriesController, type: :controller do
     end
 
     it 'is `200 OK`' do
-      get :index, params: { organization_name: 'emacs-jp' }
+      get :index, params: { org_name: 'emacs-jp' }
       expect(response.status).to eq 200
     end
   end

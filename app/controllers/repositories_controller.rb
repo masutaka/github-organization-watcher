@@ -1,6 +1,6 @@
 class RepositoriesController < ApplicationController
   def index
-    @organization_name = params[:organization_name]
-    @subscriptions = Repository.subscriptions_by_organization(@organization_name)
+    @org_name = params[:org_name]
+    @subscriptions = Repository.subscriptions_by_org(@org_name)
   end
 end
