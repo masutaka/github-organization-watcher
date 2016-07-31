@@ -13,7 +13,7 @@
   .repos
     - @subscriptions.each do |s|
       .repo(id="#{s.repo.gsub(/\./, '-')}")
-        = s.repo
+        = link_to s.repo, "https://github.com/#{@org_name}/#{s.repo}", target: '_blank'
         .btn-group.conditions data-toggle='buttons'
           label.btn.btn-primary.unwatching class=('active' if s.condition == :unwatching)
             input.unwatching type='radio' name="#{s.repo}-conditions" autocomplete='off' checked=(s.condition == :unwatching)
