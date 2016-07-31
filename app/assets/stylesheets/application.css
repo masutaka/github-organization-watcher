@@ -14,7 +14,7 @@
  *= require_self
  */
 
-.repository {
+.repo {
   position: relative;
   padding: 15px;
   margin: 0 0 15px 0;
@@ -24,6 +24,6 @@
   border-radius: 4px 4px 0 0;
 }
 
-.repository .conditions {
+.repo .conditions {
   float: right;
 }

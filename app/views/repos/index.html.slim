@@ -12,7 +12,7 @@
 
   .repos
     - @subscriptions.each do |s|
-      .repository
+      .repo
         = s.repo
         .btn-group.conditions data-toggle='buttons'
           label.btn.btn-primary class=('active' if s.condition == :unwatching)
