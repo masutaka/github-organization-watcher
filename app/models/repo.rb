@@ -1,13 +1,13 @@
-class Repository
+class Repo
   class << self
     THREAD_NUM = 10
 
-    def subscriptions_by_organization(name)
+    def subscriptions_by_org(name)
       agent = Sawyer::Agent.new(Settings.endpoint)
       results = []
       mutex = Mutex::new
 
-      Parallel.each(repositories(name), in_threads: THREAD_NUM) do |r|
+      Parallel.each(repos(name), in_threads: THREAD_NUM) do |r|
         condition = condition(r.full_name)
 
         mutex.synchronize do
@@ -20,8 +20,8 @@ class Repository
 
     private
 
-    def repositories(organization_name)
-      client.organization_repositories(organization_name)
+    def repos(org_name)
+      client.organization_repositories(org_name)
     end
 
     def condition(full_name)

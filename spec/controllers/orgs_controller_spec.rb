@@ -1,4 +1,4 @@
-RSpec.describe OrganizationsController, type: :controller do
+RSpec.describe OrgsController, type: :controller do
   describe '#index' do
     before do
       stub_request_get_200('https://api.github.com/user/orgs',
