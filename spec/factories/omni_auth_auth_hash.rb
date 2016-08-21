@@ -5,7 +5,7 @@ FactoryGirl.define do
         OmniAuth::AuthHash.new(
           uid: '123456',
           info: OmniAuth::AuthHash::InfoHash.new(nickname: 'taro'),
-          credentials: OmniAuth::AuthHash.new(token: 'd5c8c42eb783cc2304698c289dfcbe86c5b3e5d5')
+          credentials: OmniAuth::AuthHash.new(token: 'e9c8c42eb783cc2304698c289dfcbe86c5b3e5d5')
         )
       end
     end
