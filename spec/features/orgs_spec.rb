@@ -2,9 +2,11 @@ feature 'Orgs' do
   include_context 'Capybara Features'
 
   given(:github_endpoint) { 'https://api.github.com/user/orgs' }
+  given(:user) { FactoryGirl.create(:user) }
 
   context 'given a user who belongs to `emacs-jp`' do
     background do
+      login_as user
       stub_request_get_200(github_endpoint, fixture('user_orgs_emacs-jp.json'))
     end
 
@@ -16,6 +18,7 @@ feature 'Orgs' do
 
   context 'given a user who doesnot belong to any orgs' do
     background do
+      login_as user
       stub_request_get_200(github_endpoint, fixture('user_orgs_empty.json'))
     end
 
