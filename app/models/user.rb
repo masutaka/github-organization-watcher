@@ -3,8 +3,7 @@ class User < ApplicationRecord
     user = find_by(uid: auth.uid)
 
     if user
-      user.oauth_token = auth.credentials.token
-      user.save!
+      user.update_attributes!(oauth_token: auth.credentials.token)
       user
     else
       create! do |u|
