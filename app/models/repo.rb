@@ -21,8 +21,15 @@ class Repo
     private
 
     def repos(org_name)
+      auto_paginate { client.organization_repositories(org_name) }
+    end
+
+    def auto_paginate
+      original = client.auto_paginate
       client.auto_paginate = true
-      client.organization_repositories(org_name)
+      yield
+    ensure
+      client.auto_paginate = original
     end
 
     def condition(full_name)
