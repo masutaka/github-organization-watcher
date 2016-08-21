@@ -1,4 +1,7 @@
 .container
   h1 GitHub Organization Watcher
 
-  = link_to 'Login with GitHub', '/auth/github'
+  - if logged_in?
+    = link_to 'Logout', '/logout'
+  - else
+    = link_to 'Login with GitHub', '/auth/github'

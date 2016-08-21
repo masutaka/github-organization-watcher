@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'top#index'
 
   get 'auth/:provider/callback', to: 'sessions#callback'
+  get '/logout', to: 'sessions#destroy'
 
   resources :orgs, only: [:index], param: :name do
     resources :repos, only: [:index]
