@@ -21,10 +21,6 @@ class SubscriptionsController < ApplicationController
 
   private
 
-  def client
-    @client ||= Octokit::Client.new(login: ENV['GITHUB_USER'], access_token: ENV['GITHUB_ACCESS_TOKEN'])
-  end
-
   def repo
     "#{params[:owner]}/#{params[:repo]}"
   end

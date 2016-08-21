@@ -2,7 +2,8 @@ class Repo
   class << self
     THREAD_NUM = 10
 
-    def subscriptions_by_org(name)
+    def subscriptions_by_org(name, client)
+      @@client = client
       agent = Sawyer::Agent.new(Settings.endpoint)
       results = []
       mutex = Mutex::new
@@ -21,19 +22,19 @@ class Repo
     private
 
     def repos(org_name)
-      auto_paginate { client.organization_repositories(org_name) }
+      auto_paginate { @@client.organization_repositories(org_name) }
     end
 
     def auto_paginate
-      original = client.auto_paginate
-      client.auto_paginate = true
+      original = @@client.auto_paginate
+      @@client.auto_paginate = true
       yield
     ensure
-      client.auto_paginate = original
+      @@client.auto_paginate = original
     end
 
     def condition(full_name)
-      subscription = client.subscription(full_name)
+      subscription = @@client.subscription(full_name)
 
       case
       when subscription.subscribed
@@ -44,10 +45,6 @@ class Repo
 
     rescue Octokit::NotFound
       :unwatching
-    end
-
-    def client
-      @@client ||= Octokit::Client.new(login: ENV['GITHUB_USER'], access_token: ENV['GITHUB_ACCESS_TOKEN'])
     end
   end
 end
