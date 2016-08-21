@@ -18,4 +18,9 @@ class ApplicationController < ActionController::Base
     return nil unless session[:user_id]
     User.find(session[:user_id])
   end
+
+  def authenticate_user!
+    return if logged_in?
+    redirect_to root_path, alert: 'Please login'
+  end
 end
