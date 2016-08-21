@@ -3,7 +3,7 @@ feature 'Repos' do
 
   context 'given a org `emacs-jp` with 2 repos' do
     background do
-      stub_request_get_200('https://api.github.com/orgs/emacs-jp/repos',
+      stub_request_get_200('https://api.github.com/orgs/emacs-jp/repos?per_page=100',
                            fixture('orgs_emacs-jp_2repos.json'))
       stub_request_get_200('https://api.github.com/repos/emacs-jp/emacs-jp.github.com/subscription',
                            fixture('repos_emacs-jp_watching_1repo.json'))
@@ -21,7 +21,7 @@ feature 'Repos' do
 
   context 'given a org `emacs-jp` without repos' do
     background do
-      stub_request_get_200('https://api.github.com/orgs/emacs-jp/repos',
+      stub_request_get_200('https://api.github.com/orgs/emacs-jp/repos?per_page=100',
                            fixture('orgs_emacs-jp_0repos.json'))
     end
 

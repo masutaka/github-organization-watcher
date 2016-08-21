@@ -1,7 +1,7 @@
 RSpec.describe Repo, type: :model do
   describe '.subscriptions' do
     before do
-      stub_request_get_200('https://api.github.com/orgs/emacs-jp/repos',
+      stub_request_get_200('https://api.github.com/orgs/emacs-jp/repos?per_page=100',
                            fixture('orgs_emacs-jp_1repo.json'))
     end
 
