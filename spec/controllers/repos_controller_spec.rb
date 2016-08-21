@@ -1,6 +1,9 @@
 RSpec.describe ReposController, type: :controller do
   describe '#index' do
+    let(:user) { FactoryGirl.create(:user) }
+
     before do
+      session[:user_id] = user.id
       stub_request_get_200('https://api.github.com/orgs/emacs-jp/repos?per_page=100',
                            fixture('orgs_emacs-jp_0repos.json'))
     end
