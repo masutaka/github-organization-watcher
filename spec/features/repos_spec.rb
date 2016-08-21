@@ -1,8 +1,11 @@
 feature 'Repos' do
   include_context 'Capybara Features'
 
+  given(:user) { FactoryGirl.create(:user_taro) }
+
   context 'given a org `emacs-jp` with 2 repos' do
     background do
+      login_as user
       stub_request_get_200('https://api.github.com/orgs/emacs-jp/repos?per_page=100',
                            fixture('orgs_emacs-jp_2repos.json'))
       stub_request_get_200('https://api.github.com/repos/emacs-jp/emacs-jp.github.com/subscription',
@@ -21,6 +24,7 @@ feature 'Repos' do
 
   context 'given a org `emacs-jp` without repos' do
     background do
+      login_as user
       stub_request_get_200('https://api.github.com/orgs/emacs-jp/repos?per_page=100',
                            fixture('orgs_emacs-jp_0repos.json'))
     end

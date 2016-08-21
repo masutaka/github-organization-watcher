@@ -1,4 +1,6 @@
 class SubscriptionsController < ApplicationController
+  before_action :authenticate_user_xhr!, only: [ :update, :destroy ]
+
   def update
     options =
       if params[:condition] == 'watch'
@@ -20,10 +22,6 @@ class SubscriptionsController < ApplicationController
   end
 
   private
-
-  def client
-    @client ||= Octokit::Client.new(login: ENV['GITHUB_USER'], access_token: ENV['GITHUB_ACCESS_TOKEN'])
-  end
 
   def repo
     "#{params[:owner]}/#{params[:repo]}"

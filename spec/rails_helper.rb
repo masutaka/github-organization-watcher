@@ -58,5 +58,6 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   config.include FixtureHelper
+  config.include LoginHelper
   config.include WebmockHelper
 end

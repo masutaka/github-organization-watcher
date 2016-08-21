@@ -1,5 +1,7 @@
 RSpec.describe Repo, type: :model do
   describe '.subscriptions' do
+    let(:client) { Octokit::Client.new }
+
     before do
       stub_request_get_200('https://api.github.com/orgs/emacs-jp/repos?per_page=100',
                            fixture('orgs_emacs-jp_1repo.json'))
@@ -12,7 +14,7 @@ RSpec.describe Repo, type: :model do
       end
 
       it 'is watching' do
-        expect(Repo.subscriptions_by_org('emacs-jp')).
+        expect(Repo.subscriptions_by_org('emacs-jp', client)).
           to match [
                have_attributes(repo: 'emacs-jp.github.com', condition: :watching)
              ]
@@ -26,7 +28,7 @@ RSpec.describe Repo, type: :model do
       end
 
       it 'is unwatching' do
-        expect(Repo.subscriptions_by_org('emacs-jp')).
+        expect(Repo.subscriptions_by_org('emacs-jp', client)).
           to match [
                have_attributes(repo: 'emacs-jp.github.com', condition: :unwatching)
              ]
@@ -40,7 +42,7 @@ RSpec.describe Repo, type: :model do
       end
 
       it 'is ignoring' do
-        expect(Repo.subscriptions_by_org('emacs-jp')).
+        expect(Repo.subscriptions_by_org('emacs-jp', client)).
           to match [
                have_attributes(repo: 'emacs-jp.github.com', condition: :ignoring)
              ]

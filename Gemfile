@@ -32,6 +32,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'octokit'
+gem 'omniauth-github'
 gem 'parallel'
 gem 'settingslogic'
 gem 'slim-rails'
@@ -40,6 +41,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
 
+  gem 'factory_girl_rails'
   gem 'rspec-rails', '~> 3.5'
 end
 
@@ -57,6 +59,7 @@ end
 group :test do
   gem 'capybara'
   gem 'pry-byebug'
+  gem 'rack_session_access'
   gem 'webmock'
 end
 
