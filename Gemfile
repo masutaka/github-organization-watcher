@@ -32,6 +32,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'octokit'
+gem 'omniauth-github'
 gem 'parallel'
 gem 'settingslogic'
 gem 'slim-rails'
