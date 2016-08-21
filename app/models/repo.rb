@@ -4,7 +4,6 @@ class Repo
 
     def subscriptions_by_org(name, client)
       @@client = client
-      agent = Sawyer::Agent.new(Settings.endpoint)
       results = []
       mutex = Mutex::new
 
@@ -12,7 +11,7 @@ class Repo
         condition = condition(r.full_name)
 
         mutex.synchronize do
-          results << Sawyer::Resource.new(agent, repo: r.name, condition: condition)
+          results << Hashie::Mash.new(repo: r.name, condition: condition)
         end
       end
 
