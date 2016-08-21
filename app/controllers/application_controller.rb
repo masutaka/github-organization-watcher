@@ -23,4 +23,9 @@ class ApplicationController < ActionController::Base
     return if logged_in?
     redirect_to root_path, alert: 'Please login'
   end
+
+  def authenticate_user_xhr!
+    return if logged_in?
+    render status: 401, json: { 'status' => 'ng' }.to_json
+  end
 end

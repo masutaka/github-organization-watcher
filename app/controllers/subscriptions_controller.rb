@@ -1,4 +1,6 @@
 class SubscriptionsController < ApplicationController
+  before_action :authenticate_user_xhr!, only: [ :update, :destroy ]
+
   def update
     options =
       if params[:condition] == 'watch'
