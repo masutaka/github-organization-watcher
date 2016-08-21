@@ -250,6 +250,7 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.2)
   factory_girl_rails
+  hashie
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
