@@ -26,6 +26,6 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user_xhr!
     return if logged_in?
-    render status: 401, json: { 'status' => 'ng' }.to_json
+    render status: 401, json: { 'status' => 'failed' }.to_json
   end
 end
