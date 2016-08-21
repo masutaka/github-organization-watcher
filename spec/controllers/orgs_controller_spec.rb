@@ -1,6 +1,6 @@
 RSpec.describe OrgsController, type: :controller do
   describe '#index' do
-    let(:user) { FactoryGirl.create(:user) }
+    let(:user) { FactoryGirl.create(:user_taro) }
 
     before do
       session[:user_id] = user.id
