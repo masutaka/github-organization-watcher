@@ -1,24 +1,27 @@
-# README
+# GitHub Organization Watcher [![CircleCI Badge][circleci-badge]][circleci-link]
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Requirements
 
-Things you may want to cover:
+* Ruby-2.3.x
+* PostgreSQL-9.5.x
 
-* Ruby version
+## Setup
 
-* System dependencies
+    $ ./bin/setup
 
-* Configuration
+## Start
 
-* Database creation
+    $ ./bin/rails s
 
-* Database initialization
+## Test
 
-* How to run the test suite
+    $ rake spec
 
-* Services (job queues, cache servers, search engines, etc.)
+## Deploy to Heroku
 
-* Deployment instructions
+You can create your application on Heroku.
 
-* ...
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+[circleci-badge]: https://circleci.com/gh/masutaka/github-organization-watcher/tree/master.svg?style=svg
+[circleci-link]: https://circleci.com/gh/masutaka/github-organization-watcher/tree/master
