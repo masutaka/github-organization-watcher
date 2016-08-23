@@ -44,6 +44,7 @@ group :development, :test do
 
   gem 'factory_girl_rails'
   gem 'rspec-rails', '~> 3.5'
+  gem 'rspec_junit_formatter'
 end
 
 group :development do
