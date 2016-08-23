@@ -15,7 +15,7 @@
 //= require turbolinks
 //= require_tree .
 
-$(document).on('ready page:load', function(){
+document.addEventListener('turbolinks:load', function(){
   $('.repo .conditions input:radio').on('change', function(e){
     var owner = location.pathname.match(/orgs\/(.*?)\//)[1];
     var repo = $(this).parent().parent().parent().attr('id');
