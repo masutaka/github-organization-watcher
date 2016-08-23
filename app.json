@@ -1,0 +1,14 @@
+{
+    "name": "GitHub Organization Watcher",
+    "keywords": [
+        "GitHub"
+    ],
+    "env": {
+        "GITHUB_KEY": {
+            "description": "Client ID"
+        },
+        "GITHUB_SECRET": {
+            "description": "Client Secret"
+        }
+    }
+}
