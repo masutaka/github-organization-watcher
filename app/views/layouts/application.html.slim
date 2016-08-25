@@ -30,6 +30,14 @@ html
                     - icon = content_tag(:span, '', class: 'glyphicon glyphicon-log-out', 'aria-hidden' => 'true')
                     = link_to "#{icon} Logout".html_safe, logout_path
 
+      - if flash.present?
+        .alert.alert-danger.alert-dismissible role="alert"
+          - flash.each do |_key, value|
+            button.close type="button" data-dismiss="alert" aria-label="Close"
+              span aria-hidden="true"
+                | &times;
+            | #{value}
+
       = yield
 
 

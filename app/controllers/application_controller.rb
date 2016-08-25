@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user!
     return if logged_in?
-    redirect_to root_path, alert: 'Please login'
+    redirect_to root_path, alert: 'Please Login'
   end
 
   def authenticate_user_xhr!
