@@ -1,7 +1,8 @@
-.container
-  h1 GitHub Organization Watcher
-
-  - if logged_in?
-    = link_to 'Logout', '/logout'
-  - else
-    = link_to 'Login with GitHub', '/auth/github'
+.jumbotron
+  .h1
+    | Watch repositries!
+  p
+    | An easy way to manage subscriptions of your GitHub organizations
+  p
+    a.btn.btn-primary.btn-lg href="/auth/github" role="button"
+      | Login with GitHub

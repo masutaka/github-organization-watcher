@@ -1,26 +1,22 @@
-.container
-  h1 #{@org_name} repositories
-
-  .page-header
-    ol.breadcrumb
-      li
-        = link_to 'top', '/'
-      li
-        = link_to 'organizations', orgs_path
-      li.active
-        = @org_name
-
-  .repos
-    - @subscriptions.each do |s|
-      .repo(id="#{s.repo.gsub(/\./, '-')}")
-        = link_to s.repo, "https://github.com/#{@org_name}/#{s.repo}", target: '_blank'
-        .btn-group.conditions data-toggle='buttons'
-          label.btn.btn-primary class=('active' if s.condition == :unwatching)
-            input.unwatching type='radio' name="#{s.repo}-conditions" autocomplete='off' checked=(s.condition == :unwatching)
-              | Unwatching
-          label.btn.btn-primary class=('active' if s.condition == :watching)
-            input.watching type='radio' name="#{s.repo}-conditions" autocomplete='off' checked=(s.condition == :watching)
-              | Watching
-          label.btn.btn-primary class=('active' if s.condition == :ignoring)
-            input.ignoring type='radio' name="#{s.repo}-conditions" autocomplete='off' checked=(s.condition == :ignoring)
-              | Ignoring
+.row
+  .col-xs-3
+    .orgs
+      - @orgs.each do |o|
+        .list-group
+          - condition = o.login == @org_name ? 'active' : ''
+          = link_to o.login, org_repos_path(o.login), class: "list-group-item #{condition}"
+  .col-xs-6
+    .repos
+      - @subscriptions.each do |s|
+        .repo(id="#{s.repo.gsub(/\./, '-')}")
+          = link_to s.repo, "https://github.com/#{@org_name}/#{s.repo}", target: '_blank'
+          .btn-group.conditions data-toggle='buttons'
+            label.btn.btn-primary class=('active' if s.condition == :unwatching)
+              input.unwatching type='radio' name="#{s.repo}-conditions" autocomplete='off' checked=(s.condition == :unwatching)
+                | Unwatching
+            label.btn.btn-primary class=('active' if s.condition == :watching)
+              input.watching type='radio' name="#{s.repo}-conditions" autocomplete='off' checked=(s.condition == :watching)
+                | Watching
+            label.btn.btn-primary class=('active' if s.condition == :ignoring)
+              input.ignoring type='radio' name="#{s.repo}-conditions" autocomplete='off' checked=(s.condition == :ignoring)
+                | Ignoring
