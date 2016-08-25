@@ -1,15 +1,6 @@
-.container
-  h1 Organizations
-
-  .page-header
-    ol.breadcrumb
-      li
-        = link_to 'top', '/'
-      li.active
-        | organizations
-
-  .orgs
-    - @orgs.each do |o|
-      ul
-        li
-          = link_to o.login, org_repos_path(o.login)
+.row
+  .col-xs-3
+    .orgs
+      - @orgs.each do |o|
+        .list-group
+          = link_to o.login, org_repos_path(o.login), class: 'list-group-item'
