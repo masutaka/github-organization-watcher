@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe User, type: :model do
   describe '.find_or_create_with_omniauth_by!' do
     context 'given a user' do

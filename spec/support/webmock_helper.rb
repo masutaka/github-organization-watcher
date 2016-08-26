@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module WebmockHelper
   def stub_request_get_200(uri, response_body)
     WebMock.stub_request(:get, uri).to_return(

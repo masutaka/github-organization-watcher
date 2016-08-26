@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe SessionsController, type: :routing do
   describe 'routing' do
     it 'routes to #callback' do

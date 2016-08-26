@@ -7,27 +7,13 @@ inherit_from:
 
 # Common configuration.
 AllCops:
-  # Include common Ruby source files.
-  Include:
-    - '**/*.gemspec'
-    - '**/*.podspec'
-    - '**/*.jbuilder'
-    - '**/*.rake'
-    - '**/*.opal'
-    - '**/config.ru'
-    - '**/Gemfile'
-    - '**/Rakefile'
-    - '**/Capfile'
-    - '**/Guardfile'
-    - '**/Podfile'
-    - '**/Thorfile'
-    - '**/Vagrantfile'
-    - '**/Berksfile'
-    - '**/Cheffile'
-    - '**/Vagabondfile'
-    - '**/Fastfile'
-    - '**/*Fastfile'
   Exclude:
+    - 'Rakefile'
+    - 'config/**/*'
+    - 'db/migrate/*'
+    - 'db/schema.rb'
+    - 'spec/rails_helper.rb'
+    - 'spec/spec_helper.rb'
     - 'vendor/**/*'
   # Default formatter will be used if no -f/--format option is given.
   DefaultFormatter: progress
@@ -395,12 +381,20 @@ Style/Copyright:
   Notice: '^Copyright (\(c\) )?2[0-9]{3} .+'
   AutocorrectNotice: ''
 
+# Missing top-level class documentation comment.
+Style/Documentation:
+  Enabled: false
+
 # Multi-line method chaining should be done with leading dots.
 Style/DotPosition:
   EnforcedStyle: leading
   SupportedStyles:
     - leading
     - trailing
+
+# Avoid the use of double negation (!!).
+Style/DoubleNegation:
+  Enabled: false
 
 # Warn on empty else statements
 # empty - warn only on empty else
@@ -509,6 +503,9 @@ Style/FormatString:
     - percent
 
 Style/FrozenStringLiteralComment:
+  Exclude:
+    - 'bin/*'
+    - 'config.ru'
   EnforcedStyle: when_needed
   SupportedStyles:
     # `when_needed` will add the frozen string literal comment to files
@@ -852,6 +849,10 @@ Style/SpaceBeforeFirstArg:
   # lines.
   AllowForAlignment: true
 
+# Space inside square brackets detected.
+Style/SpaceInsideBrackets:
+  Enabled: false
+
 Style/SpecialGlobalVars:
   EnforcedStyle: use_english_names
   SupportedStyles:
@@ -1069,7 +1070,7 @@ Metrics/CyclomaticComplexity:
   Max: 6
 
 Metrics/LineLength:
-  Max: 80
+  Max: 128
   # To make it possible to copy or click on URIs in the code, we allow lines
   # containing a URI to be longer than Max.
   AllowHeredoc: true

@@ -1,11 +1,25 @@
-class User < ApplicationRecord
-  def self.find_or_create_with_omniauth_by!(auth)
-    user = find_by(uid: auth.uid)
+# frozen_string_literal: true
 
-    if user
+class User < ApplicationRecord
+  class << self
+    def find_or_create_with_omniauth_by!(auth)
+      user = find_by(uid: auth.uid)
+
+      if user
+        find_with_omniauth_by(auth, user)
+      else
+        create_with_omniauth_by!(auth)
+      end
+    end
+
+    private
+
+    def find_with_omniauth_by(auth, user)
       user.update_attributes!(oauth_token: auth.credentials.token)
       user
-    else
+    end
+
+    def create_with_omniauth_by!(auth)
       create! do |u|
         u.uid = auth.uid
         u.nickname = auth.info.nickname
