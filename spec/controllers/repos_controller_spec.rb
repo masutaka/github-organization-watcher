@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe ReposController, type: :controller do
   describe '#index' do
     context 'given a session' do

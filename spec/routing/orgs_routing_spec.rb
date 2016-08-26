@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe OrgsController, type: :routing do
   describe 'routing' do
     it 'routes to #index' do

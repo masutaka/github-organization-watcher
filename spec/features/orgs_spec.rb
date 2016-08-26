@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 feature 'Orgs' do
   include_context 'Capybara Features'
 

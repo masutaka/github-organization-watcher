@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryGirl.define do
   factory :omni_auth_auth_hash, class: OmniAuth::AuthHash do
     factory :omni_auth_auth_hash_taro do

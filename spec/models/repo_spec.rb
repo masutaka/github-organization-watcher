@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Repo, type: :model do
   describe '.subscriptions' do
     let(:client) { Octokit::Client.new }
@@ -14,10 +16,8 @@ RSpec.describe Repo, type: :model do
       end
 
       it 'is watching' do
-        expect(Repo.subscriptions_by_org('emacs-jp', client)).
-          to match [
-               have_attributes(repo: 'emacs-jp.github.com', condition: :watching)
-             ]
+        expect(Repo.subscriptions_by_org('emacs-jp', client))
+          .to match [ have_attributes(repo: 'emacs-jp.github.com', condition: :watching) ]
       end
     end
 
@@ -28,10 +28,8 @@ RSpec.describe Repo, type: :model do
       end
 
       it 'is unwatching' do
-        expect(Repo.subscriptions_by_org('emacs-jp', client)).
-          to match [
-               have_attributes(repo: 'emacs-jp.github.com', condition: :unwatching)
-             ]
+        expect(Repo.subscriptions_by_org('emacs-jp', client))
+          .to match [ have_attributes(repo: 'emacs-jp.github.com', condition: :unwatching) ]
       end
     end
 
@@ -42,10 +40,8 @@ RSpec.describe Repo, type: :model do
       end
 
       it 'is ignoring' do
-        expect(Repo.subscriptions_by_org('emacs-jp', client)).
-          to match [
-               have_attributes(repo: 'emacs-jp.github.com', condition: :ignoring)
-             ]
+        expect(Repo.subscriptions_by_org('emacs-jp', client))
+          .to match [ have_attributes(repo: 'emacs-jp.github.com', condition: :ignoring) ]
       end
     end
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 ruby '2.3.1'
@@ -55,7 +57,9 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
+  gem 'pre-commit', require: false
   gem 'pry-rails'
+  gem 'rubocop', require: false
 end
 
 group :test do

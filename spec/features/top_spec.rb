@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 feature 'Top' do
   include_context 'Capybara Features'
 
