@@ -37,7 +37,6 @@ gem 'hashie'
 gem 'octokit'
 gem 'omniauth-github'
 gem 'parallel'
-gem 'settingslogic'
 gem 'slim-rails'
 
 group :development, :test do
