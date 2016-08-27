@@ -59,6 +59,7 @@ group :development do
   gem 'pre-commit', require: false
   gem 'pry-rails'
   gem 'rubocop', require: false
+  gem 'spring-commands-rspec'
 end
 
 group :test do
