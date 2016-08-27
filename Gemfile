@@ -58,6 +58,7 @@ group :development do
 
   gem 'pre-commit', require: false
   gem 'pry-rails'
+  gem 'rails_best_practices', require: false
   gem 'rubocop', require: false
   gem 'spring-commands-rspec'
   gem 'spring-commands-rubocop'
