@@ -15,14 +15,24 @@
 
 ## Test
 
-    $ rake spec
+    $ ./bin/rake spec
 
 ## Recommendation
+
+### RuboCop
 
 You can execute [rubocop](https://rubygems.org/gems/rubocop) using [pre-commit](https://rubygems.org/gems/pre-commit) by a commit.
 
     $ bundle exec pre-commit install
     $ git config pre-commit.ruby 'bundle exec ruby'
+
+Also checks at CI.
+
+### Rails Best Practices
+
+You can check whether this is Rails Best Practices. Also checks at CI.
+
+    $ bundle exec rails_best_practices .
 
 ## Heroku
 
