@@ -60,6 +60,7 @@ group :development do
   gem 'pry-rails'
   gem 'rubocop', require: false
   gem 'spring-commands-rspec'
+  gem 'spring-commands-rubocop'
 end
 
 group :test do
