@@ -7,7 +7,6 @@
 
 ## Setup
 
-    $ bundle
     $ ./bin/setup
 
 ## Start
