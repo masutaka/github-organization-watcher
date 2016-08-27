@@ -225,6 +225,8 @@ GEM
     spring (1.7.2)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
+    spring-commands-rubocop (0.1.0)
+      spring (~> 1.0)
     spring-watcher-listen (2.0.0)
       listen (>= 2.7, < 4.0)
       spring (~> 1.2)
@@ -291,6 +293,7 @@ DEPENDENCIES
   slim-rails
   spring
   spring-commands-rspec
+  spring-commands-rubocop
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
   tzinfo-data
