@@ -44,7 +44,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
 
   gem 'factory_girl_rails'
-  gem 'rspec-rails', '~> 3.5'
+  gem 'rspec-rails'
   gem 'rspec_junit_formatter'
 end
 
