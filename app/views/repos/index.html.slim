@@ -8,7 +8,7 @@
   .col-xs-6
     .repos
       - @subscriptions.each do |s|
-        .repo(id="#{s.repo.gsub(/\./, '-')}")
+        .repo id=s.repo
           = link_to s.repo, "https://github.com/#{@org_name}/#{s.repo}", target: '_blank'
           .btn-group.conditions data-toggle='buttons'
             label.btn.btn-primary class=('active' if s.condition == :unwatching)
