@@ -21,7 +21,7 @@ feature 'Repos' do
     scenario 'shows the repos and the conditions' do
       visit '/orgs/emacs-jp/repos'
       expect(page).to have_css 'a.active', text: 'emacs-jp'
-      expect(find(:css, '#emacs-jp-github-com .watching')).to be_checked
+      expect(find(:css, '#emacs-jp\.github\.com .watching')).to be_checked
       expect(find(:css, '#init-loader .unwatching')).to be_checked
     end
   end
