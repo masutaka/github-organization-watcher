@@ -17,7 +17,7 @@ class Repo
         end
       end
 
-      results.sort { |a, b| a.repo <=> b.repo }
+      results.sort_by(&:repo)
     end
 
     private
