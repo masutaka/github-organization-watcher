@@ -1,5 +1,10 @@
 # These are all the cops that are enabled in the default configuration.
 
+# By default, the rails cops are not run. Override in project or home
+# directory .rubocop.yml files, or by giving the -R/--rails option.
+Rails:
+  Enabled: true
+
 Style/AccessModifierIndentation:
   Description: Check indentation of private/protected visibility modifiers.
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#indent-public-private-protected'
@@ -176,21 +181,9 @@ Style/PreferredHashMethods:
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#hash-key'
   Enabled: true
 
-Style/Documentation:
-  Description: 'Document classes and non-namespace modules.'
-  Enabled: true
-  Exclude:
-    - 'spec/**/*'
-    - 'test/**/*'
-
 Style/DotPosition:
   Description: 'Checks the position of the dot in multi-line method calls.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#consistent-multi-line-chains'
-  Enabled: true
-
-Style/DoubleNegation:
-  Description: 'Checks for uses of double negation (!!).'
-  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-bang-bang'
   Enabled: true
 
 Style/EachForSimpleLoop:
@@ -785,11 +778,6 @@ Style/SpaceInsideArrayPercentLiteral:
 
 Style/SpaceInsidePercentLiteralDelimiters:
   Description: 'No unnecessary spaces inside delimiters of %i/%w/%x literals.'
-  Enabled: true
-
-Style/SpaceInsideBrackets:
-  Description: 'No spaces after [ or before ].'
-  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-spaces-braces'
   Enabled: true
 
 Style/SpaceInsideHashLiteralBraces:
