@@ -1,22 +1,40 @@
 # This is the default configuration file. Enabling and disabling is configured
 # in separate files. This file adds all other parameters apart from Enabled.
 
+inherit_from:
+  - enabled.yml
+  - disabled.yml
+
 # Common configuration.
 AllCops:
+  # Include common Ruby source files.
+  Include:
+    - '**/*.gemspec'
+    - '**/*.podspec'
+    - '**/*.jbuilder'
+    - '**/*.rake'
+    - '**/*.opal'
+    - '**/config.ru'
+    - '**/Gemfile'
+    - '**/Rakefile'
+    - '**/Capfile'
+    - '**/Guardfile'
+    - '**/Podfile'
+    - '**/Thorfile'
+    - '**/Vagrantfile'
+    - '**/Berksfile'
+    - '**/Cheffile'
+    - '**/Vagabondfile'
+    - '**/Fastfile'
+    - '**/*Fastfile'
   Exclude:
-    - 'Rakefile'
-    - 'config/**/*'
-    - 'db/migrate/*'
-    - 'db/schema.rb'
-    - 'spec/rails_helper.rb'
-    - 'spec/spec_helper.rb'
     - 'vendor/**/*'
   # Default formatter will be used if no -f/--format option is given.
   DefaultFormatter: progress
   # Cop names are not displayed in offense messages by default. Change behavior
   # by overriding DisplayCopNames, or by giving the -D/--display-cop-names
   # option.
-  DisplayCopNames: true
+  DisplayCopNames: false
   # Style guide URLs are not displayed in offense messages by default. Change
   # behavior by overriding DisplayStyleGuide, or by giving the
   # -S/--display-style-guide option.
@@ -60,7 +78,7 @@ AllCops:
   # If a value is specified for TargetRubyVersion then it is used.
   # Else if .ruby-version exists and it contains an MRI version it is used.
   # Otherwise we fallback to the oldest officially supported Ruby version (2.0).
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: ~
 
 # Indent private/protected/public as deep as method definitions
 Style/AccessModifierIndentation:
@@ -377,9 +395,8 @@ Style/Copyright:
   Notice: '^Copyright (\(c\) )?2[0-9]{3} .+'
   AutocorrectNotice: ''
 
-# Missing top-level class documentation comment.
-Style/Documentation:
-  Enabled: false
+Style/DocumentationMethod:
+  RequireForNonPublicMethods: false
 
 # Multi-line method chaining should be done with leading dots.
 Style/DotPosition:
@@ -387,10 +404,6 @@ Style/DotPosition:
   SupportedStyles:
     - leading
     - trailing
-
-# Avoid the use of double negation (!!).
-Style/DoubleNegation:
-  Enabled: false
 
 # Warn on empty else statements
 # empty - warn only on empty else
@@ -499,9 +512,6 @@ Style/FormatString:
     - percent
 
 Style/FrozenStringLiteralComment:
-  Exclude:
-    - 'bin/*'
-    - 'config.ru'
   EnforcedStyle: when_needed
   SupportedStyles:
     # `when_needed` will add the frozen string literal comment to files
@@ -525,9 +535,14 @@ Style/GuardClause:
 Style/HashSyntax:
   EnforcedStyle: ruby19
   SupportedStyles:
+    # checks for 1.9 syntax (e.g. {a: 1}) for all symbol keys
     - ruby19
-    - ruby19_no_mixed_keys
+    # checks for hash rocket syntax for all hashes
     - hash_rockets
+    # forbids mixed key syntaxes (e.g. {a: 1, :b => 2})
+    - no_mixed_keys
+    # enforces both ruby19 and no_mixed_keys styles
+    - ruby19_no_mixed_keys
   # Force hashes that have a symbol value to use hash rockets
   UseHashRocketsWithSymbolValues: false
   # Do not suggest { a?: 1 } over { :a? => 1 } in ruby19 style
@@ -635,6 +650,16 @@ Style/NonNilCheck:
   # With `IncludeSemanticChanges` set to `false`, this cop does not report
   # offenses for `!x.nil?` and does no changes that might change behavior.
   IncludeSemanticChanges: false
+
+Style/NumericPredicate:
+  EnforcedStyle: predicate
+  SupportedStyles:
+    - predicate
+    - comparison
+  # Exclude RSpec specs because assertions like `expect(1).to be > 0` cause
+  # false positives.
+  Exclude:
+    - 'spec/**/*'
 
 Style/MethodDefParentheses:
   EnforcedStyle: require_parentheses
@@ -845,10 +870,6 @@ Style/SpaceBeforeFirstArg:
   # lines.
   AllowForAlignment: true
 
-# Space inside square brackets detected.
-Style/SpaceInsideBrackets:
-  Enabled: false
-
 Style/SpecialGlobalVars:
   EnforcedStyle: use_english_names
   SupportedStyles:
@@ -949,6 +970,13 @@ Style/SymbolProc:
     - respond_to
     - define_method
 
+Style/TernaryParentheses:
+  EnforcedStyle: require_no_parentheses
+  SupportedStyles:
+    - require_parentheses
+    - require_no_parentheses
+  AllowSafeAssignment: true
+
 Style/TrailingBlankLines:
   EnforcedStyle: final_newline
   SupportedStyles:
@@ -971,7 +999,7 @@ Style/TrailingCommaInLiteral:
   # hash, but only when each item is on its own line.
   # If `consistent_comma`, the cop requires a comma after the last item of all
   # non-empty array and hash literals.
-  EnforcedStyleForMultiline: comma
+  EnforcedStyleForMultiline: no_comma
   SupportedStyles:
     - comma
     - consistent_comma
@@ -1025,6 +1053,13 @@ Style/VariableName:
     - snake_case
     - camelCase
 
+Style/VariableNumber:
+  EnforcedStyle: normalcase
+  SupportedStyles:
+    - snake_case
+    - normalcase
+    - non_integer
+
 Style/WhileUntilModifier:
   MaxLineLength: 80
 
@@ -1046,7 +1081,7 @@ Style/WordArray:
 ##################### Metrics ##################################
 
 Metrics/AbcSize:
-  # The ABC size is a calculated magnitude, so this number can be a Fixnum or
+  # The ABC size is a calculated magnitude, so this number can be an Integer or
   # a Float.
   Max: 15
 
@@ -1066,7 +1101,7 @@ Metrics/CyclomaticComplexity:
   Max: 6
 
 Metrics/LineLength:
-  Max: 128
+  Max: 80
   # To make it possible to copy or click on URIs in the code, we allow lines
   # containing a URI to be longer than Max.
   AllowHeredoc: true
@@ -1157,9 +1192,6 @@ Performance/RedundantMerge:
 
 ##################### Rails ##################################
 
-Rails:
-  Enabled: true
-
 Rails/ActionFilter:
   EnforcedStyle: action
   SupportedStyles:
@@ -1199,6 +1231,10 @@ Rails/HasAndBelongsToMany:
   Include:
     - app/models/**/*.rb
 
+Rails/NotNullColumn:
+  Include:
+    - db/migrate/*.rb
+
 Rails/Output:
   Include:
     - app/**/*.rb
@@ -1215,6 +1251,13 @@ Rails/RequestReferer:
   SupportedStyles:
     - referer
     - referrer
+
+Rails/SafeNavigation:
+  # This will convert usages of `try` to use safe navigation as well as `try!`.
+  # `try` and `try!` work slighly differently. `try!` and safe navigation will
+  # both raise a `NoMethodError` if the receiver of the method call does not
+  # implement the intended method. `try` will not raise an exception for this.
+  ConvertTry: false
 
 Rails/ScopeArgs:
   Include:
