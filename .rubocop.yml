@@ -8,7 +8,7 @@ inherit_from:
 # Common configuration.
 AllCops:
   Exclude:
-    - 'Rakefile'
+    - '**/Rakefile'
     - 'config/**/*'
     - 'db/migrate/*'
     - 'db/schema.rb'
@@ -25,6 +25,9 @@ AllCops:
   # behavior by overriding DisplayStyleGuide, or by giving the
   # -S/--display-style-guide option.
   DisplayStyleGuide: false
+  # When specifying style guide URLs, any paths and/or fragments will be
+  # evaluated relative to the base URL.
+  StyleGuideBaseURL: https://github.com/bbatsov/ruby-style-guide
   # Extra details are not displayed in offense messages by default. Change
   # behavior by overriding ExtraDetails, or by giving the
   # -E/--extra-details option.
@@ -418,12 +421,14 @@ Style/EmptyLinesAroundClassBody:
   EnforcedStyle: no_empty_lines
   SupportedStyles:
     - empty_lines
+    - empty_lines_except_namespace
     - no_empty_lines
 
 Style/EmptyLinesAroundModuleBody:
   EnforcedStyle: no_empty_lines
   SupportedStyles:
     - empty_lines
+    - empty_lines_except_namespace
     - no_empty_lines
 
 # Checks whether the source file has a utf-8 encoding comment or not
@@ -806,6 +811,12 @@ Style/PredicateName:
   Exclude:
     - 'spec/**/*'
 
+Style/PreferredHashMethods:
+  EnforcedStyle: short
+  SupportedStyles:
+    - short
+    - verbose
+
 Style/RaiseArgs:
   EnforcedStyle: exploded
   SupportedStyles:
@@ -829,6 +840,11 @@ Style/RegexpLiteral:
   # If false, the cop will always recommend using %r if one or more slashes
   # are found in the regexp string.
   AllowInnerSlashes: false
+
+Style/SafeNavigation:
+  # Safe navigation may cause a statement to start returning `nil` in addition
+  # to whatever it used to return.
+  ConvertCodeThatCanStartToReturnNil: false
 
 Style/Semicolon:
   # Allow ; to separate several expressions on the same line.
@@ -1098,10 +1114,21 @@ Metrics/LineLength:
   URISchemes:
     - http
     - https
+  # The IgnoreCopDirectives option causes the LineLength rule to ignore cop
+  # directives like '# rubocop: enable ...' when calculating a line's length.
+  IgnoreCopDirectives: false
 
 Metrics/MethodLength:
   CountComments: false  # count full line comments?
   Max: 10
+
+Metrics/BlockLength:
+  CountComments: false  # count full line comments?
+  Max: 25
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'spec/**/*.rb'
 
 Metrics/ParameterLists:
   Max: 5
@@ -1199,6 +1226,10 @@ Rails/Date:
   SupportedStyles:
     - strict
     - flexible
+
+Rails/DynamicFindBy:
+  Whitelist:
+    - find_by_sql
 
 Rails/Exit:
   Include:
