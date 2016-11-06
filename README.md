@@ -21,12 +21,7 @@
 
 ### RuboCop
 
-You can execute [rubocop](https://rubygems.org/gems/rubocop) using [pre-commit](https://rubygems.org/gems/pre-commit) by a commit.
-
-    $ bundle exec pre-commit install
-    $ git config pre-commit.ruby 'bundle exec ruby'
-
-Also checks at CI.
+Checks at CI.
 
 ### Rails Best Practices
 
