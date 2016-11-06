@@ -66,7 +66,7 @@ AllCops:
   # run on? (If there is more than one, set this to the lowest version.)
   # If a value is specified for TargetRubyVersion then it is used.
   # Else if .ruby-version exists and it contains an MRI version it is used.
-  # Otherwise we fallback to the oldest officially supported Ruby version (2.0).
+  # Otherwise we fallback to the oldest officially supported Ruby version (2.1).
   TargetRubyVersion: 2.3
 
 # Indent private/protected/public as deep as method definitions
@@ -618,6 +618,12 @@ Style/Lambda:
     - lambda
     - literal
 
+Style/SpaceInLambdaLiteral:
+  EnforcedStyle: require_no_space
+  SupportedStyles:
+    - require_no_space
+    - require_space
+
 Style/LambdaCall:
   EnforcedStyle: call
   SupportedStyles:
@@ -777,6 +783,7 @@ Style/PercentLiteralDelimiters:
   PreferredDelimiters:
     '%':  ()
     '%i': ()
+    '%I': ()
     '%q': ()
     '%Q': ()
     '%r': '{}'
@@ -860,11 +867,11 @@ Style/SignalException:
 Style/SingleLineBlockParams:
   Methods:
     - reduce:
-        - a
-        - e
+        - acc
+        - elem
     - inject:
-        - a
-        - e
+        - acc
+        - elem
 
 Style/SingleLineMethods:
   AllowIfMethodIsEmpty: true
