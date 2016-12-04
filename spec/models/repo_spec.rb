@@ -17,7 +17,7 @@ RSpec.describe Repo, type: :model do
 
       it 'is watching' do
         expect(Repo.subscriptions_by_org('emacs-jp', client))
-          .to match [ have_attributes(repo: 'emacs-jp.github.com', condition: :watching) ]
+          .to match [have_attributes(repo: 'emacs-jp.github.com', condition: :watching)]
       end
     end
 
@@ -29,7 +29,7 @@ RSpec.describe Repo, type: :model do
 
       it 'is unwatching' do
         expect(Repo.subscriptions_by_org('emacs-jp', client))
-          .to match [ have_attributes(repo: 'emacs-jp.github.com', condition: :unwatching) ]
+          .to match [have_attributes(repo: 'emacs-jp.github.com', condition: :unwatching)]
       end
     end
 
@@ -41,7 +41,7 @@ RSpec.describe Repo, type: :model do
 
       it 'is ignoring' do
         expect(Repo.subscriptions_by_org('emacs-jp', client))
-          .to match [ have_attributes(repo: 'emacs-jp.github.com', condition: :ignoring) ]
+          .to match [have_attributes(repo: 'emacs-jp.github.com', condition: :ignoring)]
       end
     end
   end
