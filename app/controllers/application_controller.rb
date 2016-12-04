@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   private
 
   def logged_in?
-    !!session[:user_id]
+    session[:user_id].present?
   end
 
   def client
