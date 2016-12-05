@@ -9,6 +9,9 @@ AllCops:
     - 'vendor/**/*'
   TargetRubyVersion: 2.3
 
+Rails:
+  Enabled: true
+
 Style/Documentation:
   Enabled: false
 
