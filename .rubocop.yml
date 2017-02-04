@@ -20,5 +20,9 @@ Style/FrozenStringLiteralComment:
     - 'bin/*'
     - 'config.ru'
 
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
 Metrics/LineLength:
   Max: 128
