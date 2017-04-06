@@ -2,8 +2,7 @@
 
 ## Requirements
 
-* Ruby-2.3.x
-* PostgreSQL-9.5.x
+* Docker
 
 ## Setup
 
@@ -15,11 +14,11 @@ Replace the value of the environment variables in `.env`.
 
 ## Start
 
-    $ ./bin/rails s
+    $ docker-compose up
 
 ## Test
 
-    $ ./bin/rake spec
+    $ docker-compose run app rake spec
 
 ## Recommendation
 
@@ -31,7 +30,7 @@ Checks at CI.
 
 You can check whether this is Rails Best Practices. Also checks at CI.
 
-    $ bundle exec rails_best_practices .
+    $ docker-compose run app rails_best_practices .
 
 ## Heroku
 
