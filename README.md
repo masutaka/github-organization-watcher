@@ -7,6 +7,10 @@
 
 ## Setup
 
+    $ cp .env.skeleton .env
+
+Replace the value of the environment variables in `.env`.
+
     $ ./bin/setup
 
 ## Start

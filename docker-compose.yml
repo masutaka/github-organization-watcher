@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  app:
+    image: masutaka/github-organization-watcher
+    build: .
+    volumes:
+      - .:/app
+      - share:/usr/local/bundle
+    ports:
+      - 3000:3000
+    environment:
+      RDB_URL_BASE: postgres://postgres:@rdb
+      GITHUB_KEY: $GITHUB_KEY
+      GITHUB_SECRET: $GITHUB_SECRET
+    command: rails s -b 0.0.0.0
+    depends_on:
+      - rdb
+  rdb:
+    image: postgres:9.5-alpine
+    ports:
+      - 15432:5432 # for convenience
+
+volumes:
+  share:
