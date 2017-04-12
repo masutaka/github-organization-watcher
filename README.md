@@ -18,7 +18,7 @@ Replace the value of the environment variables in `.env`.
 
 ## Test
 
-    $ docker-compose run app rake spec
+    $ docker-compose run --rm app rake spec
 
 ## Recommendation
 
