@@ -2,13 +2,16 @@ version: 2
 jobs:
   build:
     docker:
-      - image: masutaka/github-organization-watcher:circleci
+      - image: ruby:2.4.0-alpine
         environment:
           RDB_URL_BASE: postgres://postgres:@localhost
       - image: postgres:9.5-alpine
     working_directory: /home/circleci/github-organization-watcher
     steps:
       - checkout
+      - run:
+          name: Install System Dependencies
+          command: apk add --update --no-cache build-base postgresql-dev postgresql-libs nodejs tzdata
       - run:
           name: Install Ruby Dependencies
           command: bundle install
