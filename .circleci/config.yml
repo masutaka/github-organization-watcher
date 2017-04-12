@@ -1,0 +1,20 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: masutaka/github-organization-watcher:circleci
+        environment:
+          RDB_URL_BASE: postgres://postgres:@localhost
+      - image: postgres:9.5-alpine
+    working_directory: /home/circleci/github-organization-watcher
+    steps:
+      - checkout
+      - run:
+          name: Install Ruby Dependencies
+          command: bundle install
+      - run:
+          name: Create DB
+          command: bundle exec rake db:create db:schema:load --trace
+      - run:
+          name: Run Tests
+          command: bundle exec rake spec
