@@ -1,9 +1,0 @@
-database:
-  override:
-    - mv config/database.ci.yml config/database.yml
-    - bundle exec rake db:create db:schema:load --trace
-test:
-  override:
-    - bundle exec rails_best_practices .
-    - bundle exec rubocop
-    - RAILS_ENV=test bundle exec rspec -r rspec_junit_formatter --format RspecJunitFormatter -o $CIRCLE_TEST_REPORTS/rspec/junit.xml
