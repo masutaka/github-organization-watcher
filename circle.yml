@@ -36,4 +36,6 @@ jobs:
           command: bundle exec rubocop
       - run:
           name: Run Tests
-          command: bundle exec rake spec
+          command: RAILS_ENV=test bundle exec rspec -r rspec_junit_formatter --format RspecJunitFormatter -o /tmp/test-results/rspec/junit.xml
+      - store_test_results:
+          path: /tmp/test-results
