@@ -1,9 +1,43 @@
-database:
-  override:
-    - mv config/database.ci.yml config/database.yml
-    - bundle exec rake db:create db:schema:load --trace
-test:
-  override:
-    - bundle exec rails_best_practices .
-    - bundle exec rubocop
-    - RAILS_ENV=test bundle exec rspec -r rspec_junit_formatter --format RspecJunitFormatter -o $CIRCLE_TEST_REPORTS/rspec/junit.xml
+version: 2
+jobs:
+  build:
+    docker:
+      - image: ruby:2.4.0-alpine
+        environment:
+          RDB_URL_BASE: postgres://postgres:@localhost
+      - image: postgres:9.5-alpine
+    working_directory: /home/circleci/github-organization-watcher
+    steps:
+      - checkout
+      - run:
+          name: Install System Dependencies
+          # tar and gzip are required by restore_cache section
+          # https://discuss.circleci.com/t/does-clear-cache-work-for-2-0/10965/13
+          command: apk add --update --no-cache build-base postgresql-dev postgresql-libs nodejs tzdata tar gzip
+      - restore_cache:
+          name: Restore bundler cache
+          keys:
+            - gems-{{ .Environment.COMMON_CACHE_KEY }}-{{ checksum "Gemfile.lock" }}
+            - gems-{{ .Environment.COMMON_CACHE_KEY }}-
+      - run:
+          name: Install Ruby Dependencies
+          command: bundle install
+      - save_cache:
+          name: Save bundler cache
+          key: gems-{{ .Environment.COMMON_CACHE_KEY }}-{{ checksum "Gemfile.lock" }}
+          paths:
+            - /usr/local/bundle
+      - run:
+          name: Create DB
+          command: bundle exec rake db:create db:schema:load --trace
+      - run:
+          name: Run Rails Best Practices
+          command: bundle exec rails_best_practices .
+      - run:
+          name: Run RuboCop
+          command: bundle exec rubocop
+      - run:
+          name: Run Tests
+          command: RAILS_ENV=test bundle exec rspec -r rspec_junit_formatter --format RspecJunitFormatter -o /tmp/test-results/rspec/junit.xml
+      - store_test_results:
+          path: /tmp/test-results
