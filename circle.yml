@@ -12,9 +12,19 @@ jobs:
       - run:
           name: Install System Dependencies
           command: apk add --update --no-cache build-base postgresql-dev postgresql-libs nodejs tzdata
+      - restore_cache:
+          name: Restore bundler cache
+          keys:
+            - gems-{{ .Environment.COMMON_CACHE_KEY }}-{{ checksum "Gemfile.lock" }}
+            - gems-{{ .Environment.COMMON_CACHE_KEY }}-
       - run:
           name: Install Ruby Dependencies
           command: bundle install
+      - save_cache:
+          name: Save bundler cache
+          key: gems-{{ .Environment.COMMON_CACHE_KEY }}-{{ checksum "Gemfile.lock" }}
+          paths:
+            - {{ .Environment.BUNDLE_PATH }}
       - run:
           name: Create DB
           command: bundle exec rake db:create db:schema:load --trace
