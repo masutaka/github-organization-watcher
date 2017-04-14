@@ -9,6 +9,9 @@ jobs:
     working_directory: /home/circleci/github-organization-watcher
     steps:
       - checkout
+      - setup_remote_docker:
+          # https://circleci.com/docs/2.0/docker-layer-caching/
+          reusable: true
       - run:
           name: Install System Dependencies
           # tar and gzip are required by restore_cache section
