@@ -23,7 +23,7 @@ jobs:
             - gems-{{ .Environment.COMMON_CACHE_KEY }}-
       - run:
           name: Install Ruby Dependencies
-          command: bundle install
+          command: bundle check || bundle install --jobs=4 --retry=3
       - save_cache:
           name: Save bundler cache
           key: gems-{{ .Environment.COMMON_CACHE_KEY }}-{{ checksum "Gemfile.lock" }}
