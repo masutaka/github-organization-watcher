@@ -8,15 +8,14 @@ jobs:
       - image: postgres:9.5-alpine
     working_directory: /home/circleci/github-organization-watcher
     steps:
-      - checkout
       - setup_remote_docker:
           # https://circleci.com/docs/2.0/docker-layer-caching/
           reusable: true
       - run:
           name: Install System Dependencies
-          # tar and gzip are required by restore_cache section
-          # https://discuss.circleci.com/t/does-clear-cache-work-for-2-0/10965/13
-          command: apk add --update --no-cache build-base postgresql-dev postgresql-libs nodejs tzdata tar gzip
+          # See also https://circleci.com/docs/2.0/custom-images/#required-tools
+          command: apk add --update --no-cache git openssh-client tar gzip build-base postgresql-dev postgresql-libs nodejs tzdata
+      - checkout
       - restore_cache:
           name: Restore bundler cache
           keys:
