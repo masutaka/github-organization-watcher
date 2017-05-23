@@ -30,15 +30,15 @@ jobs:
             - /usr/local/bundle
       - run:
           name: Create DB
-          command: bundle exec rake db:create db:schema:load --trace
+          command: rake db:create db:schema:load --trace
       - run:
           name: Run Rails Best Practices
-          command: bundle exec rails_best_practices .
+          command: rails_best_practices .
       - run:
           name: Run RuboCop
-          command: bundle exec rubocop
+          command: rubocop
       - run:
           name: Run Tests
-          command: RAILS_ENV=test bundle exec rspec -r rspec_junit_formatter --format RspecJunitFormatter -o /tmp/test-results/rspec/junit.xml
+          command: rspec --format progress --format RspecJunitFormatter -o test-reports/junit.xml
       - store_test_results:
-          path: /tmp/test-results
+          path: test-reports/
