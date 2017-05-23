@@ -8,9 +8,6 @@ jobs:
       - image: postgres:9.5-alpine
     working_directory: /home/circleci/github-organization-watcher
     steps:
-      - setup_remote_docker:
-          # https://circleci.com/docs/2.0/docker-layer-caching/
-          reusable: true
       - run:
           name: Install System Dependencies
           # See also https://circleci.com/docs/2.0/custom-images/#required-tools
