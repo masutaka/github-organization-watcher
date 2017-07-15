@@ -6,7 +6,7 @@ jobs:
         environment:
           RDB_URL_BASE: postgres://postgres:@localhost
       - image: postgres:9.5-alpine
-    working_directory: /home/circleci/github-organization-watcher
+    working_directory: /work
     steps:
       - run:
           name: Install System Dependencies
