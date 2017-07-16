@@ -11,8 +11,9 @@ jobs:
       - run:
           name: Install System Dependencies
           command: |
-            # See also https://circleci.com/docs/2.0/custom-images/#required-tools
-            apk add --update --no-cache git openssh-client tar gzip build-base postgresql-dev postgresql-libs nodejs tzdata
+            # See also https://circleci.com/docs/2.0/custom-images/#adding-required-and-custom-tools-or-files
+            apk add --update --no-cache git openssh-client tar gzip ca-certificates \
+              build-base postgresql-dev postgresql-libs nodejs tzdata
             gem install -N bundler
       - checkout
       - restore_cache:
