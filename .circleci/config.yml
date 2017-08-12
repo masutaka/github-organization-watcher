@@ -5,7 +5,7 @@ jobs:
       - image: ruby:2.4.1-alpine
         environment:
           RDB_URL_BASE: postgres://postgres:@localhost
-          REDIS_URL_BASE: redis://localhost:6379
+          REDIS_URL: redis://localhost:6379
       - image: postgres:9.5-alpine
       - image: redis:3.2-alpine
     working_directory: /work

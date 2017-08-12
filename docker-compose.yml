@@ -11,7 +11,7 @@ services:
       - 3000:3000
     environment:
       RDB_URL_BASE: postgres://postgres:@rdb
-      REDIS_URL_BASE: redis://redis:6379
+      REDIS_URL: redis://redis:6379
       GITHUB_KEY: $GITHUB_KEY
       GITHUB_SECRET: $GITHUB_SECRET
     command: rails s -b 0.0.0.0
