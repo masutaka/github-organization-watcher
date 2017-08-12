@@ -11,15 +11,24 @@ services:
       - 3000:3000
     environment:
       RDB_URL_BASE: postgres://postgres:@rdb
+      REDIS_URL: redis://redis:6379
       GITHUB_KEY: $GITHUB_KEY
       GITHUB_SECRET: $GITHUB_SECRET
     command: rails s -b 0.0.0.0
     depends_on:
       - rdb
+      - redis
   rdb:
     image: postgres:9.5-alpine
     ports:
       - 15432:5432 # for convenience
+  redis:
+    image: redis:3.2-alpine
+    ports:
+      - 16379:6379 # for convenience
+    volumes:
+      - redis_data:/data
 
 volumes:
   share:
+  redis_data:
