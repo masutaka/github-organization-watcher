@@ -17,6 +17,12 @@
 	    "options": {
 		"version": "9.5"
 	    }
+	},
+	{
+	    "plan": "heroku-redis",
+	    "options": {
+		"version": "3.2"
+	    }
 	}
     ]
 }
