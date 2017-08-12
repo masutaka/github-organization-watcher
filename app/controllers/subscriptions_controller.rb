@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class SubscriptionsController < ApplicationController
-  before_action :authenticate_user_xhr!, only: %i(update destroy)
+  before_action :authenticate_user_xhr!, only: %i[update destroy]
 
   def update
     options =

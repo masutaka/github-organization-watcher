@@ -15,7 +15,7 @@ chdir APP_ROOT do
   # Add necessary setup steps to this file.
 
   puts '== Checking docker =='
-  if system('which docker-compose', %i(out err) => IO::NULL)
+  if system('which docker-compose', %i[out err] => IO::NULL)
     puts '[OK] docker-compose found.'
   else
     puts '[ERROR] You need to install docker. ex. $ brew cask install docker'
