@@ -24,13 +24,15 @@ Replace the value of the environment variables in `.env`.
 
 ### RuboCop
 
-Checks at CI.
+    $ docker-compose run --rm app rubocop
+
+Also tests in CI.
 
 ### Rails Best Practices
 
-You can check whether this is Rails Best Practices. Also checks at CI.
+You can check whether this is Rails Best Practices. Also tests in CI.
 
-    $ docker-compose run app rails_best_practices .
+    $ docker-compose run --rm app rails_best_practices .
 
 ## Heroku
 
