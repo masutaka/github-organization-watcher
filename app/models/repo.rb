@@ -42,7 +42,6 @@ class Repo
       elsif subscription.ignored
         :ignoring
       end
-
     rescue Octokit::NotFound
       :unwatching
     end
