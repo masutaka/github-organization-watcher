@@ -73,4 +73,4 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # Appended by deppbot for the security issue
-gem 'nokogiri', '>= 1.7.1'
+gem 'nokogiri', '>= 1.7.2'
