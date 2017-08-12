@@ -10,5 +10,13 @@
         "GITHUB_SECRET": {
             "description": "Client Secret"
         }
-    }
+    },
+    "addons": [
+	{
+	    "plan": "heroku-postgresql",
+	    "options": {
+		"version": "9.5"
+	    }
+	}
+    ]
 }
