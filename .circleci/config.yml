@@ -21,8 +21,8 @@ jobs:
       - restore_cache:
           name: Restore bundler cache
           keys:
-            - gems-{{ .Environment.COMMON_CACHE_KEY }}-{{ checksum "Gemfile.lock" }}
-            - gems-{{ .Environment.COMMON_CACHE_KEY }}-
+            - gems-{{ arch }}-{{ .Environment.COMMON_CACHE_KEY }}-{{ checksum "Gemfile.lock" }}
+            - gems-{{ arch }}-{{ .Environment.COMMON_CACHE_KEY }}-
       - run:
           name: Install Ruby Dependencies
           command: |
@@ -30,7 +30,7 @@ jobs:
             bundle clean
       - save_cache:
           name: Save bundler cache
-          key: gems-{{ .Environment.COMMON_CACHE_KEY }}-{{ checksum "Gemfile.lock" }}
+          key: gems-{{ arch }}-{{ .Environment.COMMON_CACHE_KEY }}-{{ checksum "Gemfile.lock" }}
           paths:
             - /usr/local/bundle
       - run:
