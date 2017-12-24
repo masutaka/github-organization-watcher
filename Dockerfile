@@ -1,4 +1,4 @@
-FROM ruby:2.4.1-alpine
+FROM ruby:2.4.3-alpine
 LABEL maintainer "masutaka.net@gmail.com"
 
 ENV BUILD_DEPENDENCIES="build-base postgresql-dev"
@@ -11,5 +11,3 @@ ENV BUNDLE_JOBS=4 \
 WORKDIR /app
 COPY Gemfile Gemfile.lock /app/
 RUN bundle install
-
-RUN apk del --purge $BUILD_DEPENDENCIES

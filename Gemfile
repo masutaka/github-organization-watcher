@@ -2,6 +2,8 @@
 
 source 'https://rubygems.org'
 
+ruby '2.4.3'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0'
 # Use PostgreSQL as the database for Active Record
@@ -42,7 +44,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
 
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'rspec-rails'
   gem 'rspec_junit_formatter'
 end
@@ -58,7 +60,6 @@ group :development do
   gem 'pry-rails'
   gem 'rails_best_practices', require: false
   gem 'rubocop', require: false
-  gem 'rubycritic'
   gem 'spring-commands-rspec'
   gem 'spring-commands-rubocop'
 end

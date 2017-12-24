@@ -2,7 +2,7 @@
 
 RSpec.describe SubscriptionsController, type: :controller do
   let(:github_endpoint) { 'https://api.github.com/repos/emacs-jp/emacs-jp.github.com/subscription' }
-  let(:user) { FactoryGirl.create(:user_taro) }
+  let(:user) { create(:user_taro) }
 
   describe '#update' do
     context 'given a session' do

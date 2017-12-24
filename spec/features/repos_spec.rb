@@ -3,7 +3,7 @@
 feature 'Repos' do
   include_context 'Capybara Features'
 
-  given(:user) { FactoryGirl.create(:user_taro) }
+  given(:user) { create(:user_taro) }
 
   context 'given a org `emacs-jp` with 2 repos' do
     background do

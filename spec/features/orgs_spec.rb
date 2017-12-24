@@ -4,7 +4,7 @@ feature 'Orgs' do
   include_context 'Capybara Features'
 
   given(:github_endpoint) { 'https://api.github.com/user/orgs' }
-  given(:user) { FactoryGirl.create(:user_taro) }
+  given(:user) { create(:user_taro) }
 
   context 'given a user who belongs to `emacs-jp`' do
     background do
