@@ -4,7 +4,7 @@ feature 'Top' do
   include_context 'Capybara Features'
 
   context 'given a session' do
-    given(:user) { FactoryGirl.create(:user_taro) }
+    given(:user) { create(:user_taro) }
     given(:github_endpoint) { 'https://api.github.com/user/orgs' }
 
     background do

@@ -3,9 +3,9 @@
 RSpec.describe User, type: :model do
   describe '.find_or_create_with_omniauth_by!' do
     context 'given a user' do
-      let(:auth_taro) { FactoryGirl.build(:omni_auth_auth_hash_taro) }
+      let(:auth_taro) { build(:omni_auth_auth_hash_taro) }
 
-      before { FactoryGirl.create(:user_taro) }
+      before { create(:user_taro) }
 
       it 'is same uid' do
         expect(
@@ -21,7 +21,7 @@ RSpec.describe User, type: :model do
     end
 
     context 'given nothing' do
-      let(:auth_hanako) { FactoryGirl.build(:omni_auth_auth_hash_hanako) }
+      let(:auth_hanako) { build(:omni_auth_auth_hash_hanako) }
 
       it 'creates a user' do
         expect(
