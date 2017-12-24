@@ -58,7 +58,6 @@ group :development do
   gem 'pry-rails'
   gem 'rails_best_practices', require: false
   gem 'rubocop', require: false
-  gem 'rubycritic'
   gem 'spring-commands-rspec'
   gem 'spring-commands-rubocop'
 end
