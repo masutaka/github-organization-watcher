@@ -11,5 +11,3 @@ ENV BUNDLE_JOBS=4 \
 WORKDIR /app
 COPY Gemfile Gemfile.lock /app/
 RUN bundle install
-
-RUN apk del --purge $BUILD_DEPENDENCIES
