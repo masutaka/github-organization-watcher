@@ -8,7 +8,7 @@ services:
       - .:/app
       - share:/usr/local/bundle
     ports:
-      - 3000:3000
+      - 13000:3000
     environment:
       RDB_URL_BASE: postgres://postgres:@rdb
       REDIS_URL: redis://redis:6379
