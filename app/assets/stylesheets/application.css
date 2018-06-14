@@ -14,14 +14,25 @@
  *= require_self
  */
 
+.repos {
+  margin-bottom: 3rem;
+}
+
 .repo {
-  position: relative;
-  padding: 15px;
-  margin: 0 0 15px 0;
-  border-style: solid;
-  border-color: #ddd;
-  border-width: 1px;
-  border-radius: 4px 4px 0 0;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  border-top: solid #efefef 1px;
+  border-left: solid #ffffff 5px;
+  vertical-align: middle;
+}
+
+.repos div.watching {
+  border-left: solid #d6e9c6 5px;
+}
+.repos div.ignoring {
+  border-left: solid #ebccd1 5px;
 }
 
 .repo .conditions {

@@ -1,6 +1,8 @@
 .row
-  .col-xs-3
+  .col-xs-3.sidebar
     .orgs
-      - @orgs.each do |o|
-        .list-group
-          = link_to o.login, org_repos_path(o.login), class: 'list-group-item'
+      h4 Organizations
+      ul.nav.nav-pills.nav-stacked
+        - @orgs.each do |o|
+          li
+            = link_to o.login, org_repos_path(o.login)
