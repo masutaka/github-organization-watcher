@@ -20,9 +20,9 @@ feature 'Repos' do
 
     scenario 'shows the repos and the conditions' do
       visit '/orgs/emacs-jp/repos'
-      expect(page).to have_css 'a.active', text: 'emacs-jp'
-      expect(find(:css, '#emacs-jp\.github\.com .watching')).to be_checked
-      expect(find(:css, '#init-loader .unwatching')).to be_checked
+      expect(page).to have_css 'li.active', text: 'emacs-jp'
+      expect(find(:css, '#emacs-jp\.github\.com input.watching')).to be_checked
+      expect(find(:css, '#init-loader input.unwatching')).to be_checked
     end
   end
 
@@ -37,7 +37,7 @@ feature 'Repos' do
 
     scenario 'doesnot shows any repos and conditions' do
       visit '/orgs/emacs-jp/repos'
-      expect(page).to have_css 'a.active', text: 'emacs-jp'
+      expect(page).to have_css 'li.active', text: 'emacs-jp'
       expect(page).to_not have_content 'emacs-jp.github.com'
       expect(page).to_not have_content 'init-loader'
     end
