@@ -1,22 +1,30 @@
 .row
-  .col-xs-3
+  .col-xs-3.sidebar
     .orgs
-      - @orgs.each do |o|
-        .list-group
+      h4 Organizations
+      ul.nav.nav-pills.nav-stacked
+        - @orgs.each do |o|
           - condition = o.login == @org_name ? 'active' : ''
-          = link_to o.login, org_repos_path(o.login), class: "list-group-item #{condition}"
-  .col-xs-6
-    .repos
+          = content_tag :li, '', class: condition
+            = link_to o.login, org_repos_path(o.login)
+  .col-xs-8.main
+    .container-fluid.repos
+      h4 Repositories
       - @subscriptions.each do |s|
-        .repo id=s.repo
-          = link_to s.repo, "https://github.com/#{@org_name}/#{s.repo}", target: '_blank', rel: 'nofollow noopener'
-          .btn-group.conditions data-toggle='buttons'
-            label.btn.btn-primary class=('active' if s.condition == :unwatching)
-              input.unwatching type='radio' name="#{s.repo}-conditions" autocomplete='off' checked=(s.condition == :unwatching)
-                | Unwatching
-            label.btn.btn-primary class=('active' if s.condition == :watching)
-              input.watching type='radio' name="#{s.repo}-conditions" autocomplete='off' checked=(s.condition == :watching)
-                | Watching
-            label.btn.btn-primary class=('active' if s.condition == :ignoring)
-              input.ignoring type='radio' name="#{s.repo}-conditions" autocomplete='off' checked=(s.condition == :ignoring)
-                | Ignoring
+        .row.repo id=s.repo class=(s.condition.to_s)
+          .col-xs-6
+            = link_to s.repo, "https://github.com/#{@org_name}/#{s.repo}", target: '_blank', class: 'btn btn-link btn-lg', rel: 'nofollow noopener'
+          .col-xs-6
+            .btn-group.conditions data-toggle='buttons'
+              label.btn.btn-default.unwatching class=('active' if s.condition == :unwatching)
+                input.unwatching type='radio' name="#{s.repo}-conditions" autocomplete='off' checked=(s.condition == :unwatching)
+                  i.glyphicon.glyphicon-eye-close
+                  | &nbsp;Unwatching
+              label.btn.btn-default.watching class=('active' if s.condition == :watching)
+                input.watching type='radio' name="#{s.repo}-conditions" autocomplete='off' checked=(s.condition == :watching)
+                  i.glyphicon.glyphicon-eye-open
+                  | &nbsp;Watching
+              label.btn.btn-default.ignoring class=('active' if s.condition == :ignoring)
+                input.ignoring type='radio' name="#{s.repo}-conditions" autocomplete='off' checked=(s.condition == :ignoring)
+                  i.glyphicon.glyphicon-volume-off.text-danger
+                  | &nbsp;Ignoring
