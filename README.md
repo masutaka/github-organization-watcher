@@ -16,6 +16,8 @@ Replace the value of the environment variables in `.env`.
 
     $ docker-compose up
 
+Visit http://localhost:13000
+
 ## Test
 
     $ docker-compose run --rm app rake spec
