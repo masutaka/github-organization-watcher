@@ -15,7 +15,7 @@ class User < ApplicationRecord
     private
 
     def find_with_omniauth_by(auth, user)
-      user.update_attributes!(oauth_token: auth.credentials.token)
+      user.update!(oauth_token: auth.credentials.token)
       user
     end
 

@@ -1,6 +1,7 @@
 AllCops:
   Exclude:
     - '**/Rakefile'
+    - 'bin/**/*'
     - 'config/**/*'
     - 'db/migrate/*'
     - 'db/schema.rb'

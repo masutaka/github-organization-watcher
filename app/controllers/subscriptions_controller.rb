@@ -14,13 +14,13 @@ class SubscriptionsController < ApplicationController
     Rails.logger.info("#{params[:condition]} #{repo}")
     client.update_subscription(repo, options)
 
-    render status: 201, json: { 'status' => 'ok' }.to_json
+    render status: :created, json: { 'status' => 'ok' }.to_json
   end
 
   def destroy
     Rails.logger.info("unwatch #{repo}")
     client.delete_subscription(repo)
-    render status: 200, json: { 'status' => 'ok' }.to_json
+    render status: :ok, json: { 'status' => 'ok' }.to_json
   end
 
   private
