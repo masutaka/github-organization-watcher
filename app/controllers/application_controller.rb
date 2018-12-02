@@ -18,16 +18,19 @@ class ApplicationController < ActionController::Base
 
   def current_user
     return nil unless session[:user_id]
+
     User.find(session[:user_id])
   end
 
   def authenticate_user!
     return if logged_in?
+
     redirect_to root_path, alert: 'Please Login'
   end
 
   def authenticate_user_xhr!
     return if logged_in?
+
     render status: :unauthorized, json: { 'status' => 'failed' }.to_json
   end
 end
