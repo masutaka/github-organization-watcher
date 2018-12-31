@@ -11,9 +11,11 @@
     .container-fluid.repos
       h4 Repositories
       - @subscriptions.each do |s|
-        .row.repo id=s.repo class=(s.condition.to_s)
+        .row.repo id=s.repo class=(s.condition.to_s + (s.archived ? ' archived' : ''))
           .col-xs-6
-            = link_to s.repo, "https://github.com/#{@org_name}/#{s.repo}", target: '_blank', class: 'btn btn-link btn-lg', rel: 'nofollow noopener'
+            - name  = s.repo
+            - name += ' [archived]' if s.archived
+            = link_to name, "https://github.com/#{@org_name}/#{s.repo}", target: '_blank', class: 'btn btn-link btn-lg', rel: 'nofollow noopener'
           .col-xs-6
             .btn-group.conditions data-toggle='buttons'
               label.btn.btn-default.unwatching class=('active' if s.condition == :unwatching)

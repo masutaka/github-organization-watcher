@@ -13,7 +13,7 @@ class Repo
         condition = condition(r.full_name)
 
         mutex.synchronize do
-          results << Hashie::Mash.new(repo: r.name, condition: condition)
+          results << Hashie::Mash.new(repo: r.name, condition: condition, archived: r.archived)
         end
       end
 
