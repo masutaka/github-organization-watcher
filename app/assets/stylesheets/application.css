@@ -38,3 +38,7 @@
 .repo .conditions {
   float: right;
 }
+
+.archived {
+  background-color: #f9f9f9
+}
