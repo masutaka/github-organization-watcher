@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: ruby:2.4.5-alpine
+      - image: ruby:2.4.6-alpine
         environment:
           RDB_URL_BASE: postgres://postgres:@localhost
           REDIS_URL: redis://localhost:6379
