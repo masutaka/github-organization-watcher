@@ -1,8 +1,10 @@
 # GitHub Organization Watcher
 
 [![CircleCI Status](https://img.shields.io/circleci/build/github/masutaka/github-organization-watcher?logo=circleci&style=flat)][circleci]
+[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=masutaka/github-organization-watcher)][dependabot]
 
 [circleci]: https://circleci.com/gh/masutaka/github-organization-watcher
+[dependabot]: https://dependabot.com
 
 ## Requirements
 
