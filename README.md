@@ -1,4 +1,8 @@
-# GitHub Organization Watcher [![CircleCI Badge][circleci-badge]][circleci-link]
+# GitHub Organization Watcher
+
+[![CircleCI Status](https://img.shields.io/circleci/build/github/masutaka/github-organization-watcher?logo=circleci&style=flat)][circleci]
+
+[circleci]: https://circleci.com/gh/masutaka/github-organization-watcher
 
 ## Requirements
 
@@ -39,6 +43,3 @@ You can check whether this is Rails Best Practices. Also tests in CI.
 ## Heroku
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
-[circleci-badge]: https://circleci.com/gh/masutaka/github-organization-watcher/tree/master.svg?style=svg
-[circleci-link]: https://circleci.com/gh/masutaka/github-organization-watcher/tree/master
