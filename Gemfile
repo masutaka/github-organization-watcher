@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-ruby '2.4.6'
+ruby '2.6.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0'
@@ -60,6 +60,9 @@ group :development do
   gem 'pry-rails'
   gem 'rails_best_practices', require: false
   gem 'rubocop', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', require: false
   gem 'spring-commands-rspec'
   gem 'spring-commands-rubocop'
 end

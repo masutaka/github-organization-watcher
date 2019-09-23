@@ -26,7 +26,7 @@ feature 'Orgs' do
 
     scenario 'doesnot show any orgs' do
       visit '/orgs'
-      expect(page).to_not have_content 'emacs-jp'
+      expect(page).not_to have_content 'emacs-jp'
     end
   end
 end
