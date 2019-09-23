@@ -14,7 +14,7 @@ feature 'Top' do
 
     scenario 'shows "Logout"' do
       visit '/'
-      expect(current_path).to eq '/orgs'
+      expect(page).to have_current_path '/orgs'
     end
   end
 

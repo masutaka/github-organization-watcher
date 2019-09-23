@@ -38,8 +38,8 @@ feature 'Repos' do
     scenario 'doesnot shows any repos and conditions' do
       visit '/orgs/emacs-jp/repos'
       expect(page).to have_css 'li.active', text: 'emacs-jp'
-      expect(page).to_not have_content 'emacs-jp.github.com'
-      expect(page).to_not have_content 'init-loader'
+      expect(page).not_to have_content 'emacs-jp.github.com'
+      expect(page).not_to have_content 'init-loader'
     end
   end
 end

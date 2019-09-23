@@ -1,3 +1,9 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+inherit_from: .rubocop_todo.yml
+
 AllCops:
   Exclude:
     - '**/Rakefile'
@@ -10,8 +16,15 @@ AllCops:
     - 'vendor/**/*'
   TargetRubyVersion: 2.6
 
+Capybara/FeatureMethods:
+  Exclude:
+    - 'spec/features/**/*'
+
 Rails:
   Enabled: true
+
+RSpec/DescribedClass:
+  Enabled: false
 
 Style/Documentation:
   Enabled: false
