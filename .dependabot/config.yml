@@ -2,10 +2,10 @@ version: 1
 update_configs:
   - package_manager: "docker"
     directory: "/"
-    update_schedule: "weekly"
+    update_schedule: "monthly"
   - package_manager: "ruby:bundler"
     directory: "/"
-    update_schedule: "weekly"
+    update_schedule: "monthly"
     allowed_updates:
       - match:
           update_type: "all"
