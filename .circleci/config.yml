@@ -33,7 +33,7 @@ jobs:
           name: Save bundler cache
           key: gems-{{ .Environment.COMMON_CACHE_KEY }}-{{ checksum "Gemfile.lock" }}
           paths:
-            - /usr/local/bundle
+            - /work/vendor/bundle
       - run:
           name: Create DB
           command: bundle exec rake db:create db:schema:load --trace
