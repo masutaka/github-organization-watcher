@@ -7,6 +7,8 @@ jobs:
           RDB_URL_BASE: postgres://postgres:@localhost
           REDIS_URL: redis://localhost:6379
       - image: postgres:9.5-alpine
+        environment:
+          POSTGRES_HOST_AUTH_METHOD: trust
       - image: redis:4.0-alpine
     working_directory: /work
     steps:
