@@ -24,6 +24,8 @@ services:
       - 15432:5432 # for convenience
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
   redis:
     image: redis:4.0-alpine
     ports:
