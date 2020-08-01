@@ -20,6 +20,13 @@ Capybara/FeatureMethods:
   Exclude:
     - 'spec/features/**/*'
 
+Layout/LineLength:
+  Max: 128
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
 Rails:
   Enabled: true
 
@@ -33,10 +40,3 @@ Style/FrozenStringLiteralComment:
   Exclude:
     - 'bin/*'
     - 'config.ru'
-
-Metrics/BlockLength:
-  Exclude:
-    - 'spec/**/*'
-
-Layout/LineLength:
-  Max: 128
