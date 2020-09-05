@@ -28,11 +28,11 @@ FileUtils.chdir APP_ROOT do
   system! 'docker-compose run --rm app bundle install --path=vendor/bundle'
 
   puts "\n== Preparing database =="
-  system! 'docker-compose run --rm app rails db:setup'
+  system! 'docker-compose run --rm app bundle exec rails db:setup'
 
   puts "\n== Removing server.pid =="
   system! 'rm -f tmp/pids/server.pid'
 
   puts "\n== Removing old logs and tempfiles =="
-  system! 'docker-compose run --rm app rails log:clear tmp:clear'
+  system! 'docker-compose run --rm app bundle exec rails log:clear tmp:clear'
 end
