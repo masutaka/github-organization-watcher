@@ -48,7 +48,7 @@ jobs:
           command: bundle exec rake db:create db:schema:load --trace
       - run:
           name: Run Rails Best Practices
-          command: bundle exec rails_best_practices .
+          command: bundle exec rails_best_practices . && false
       - run:
           name: Run RuboCop
           command: bundle exec rubocop
