@@ -12,7 +12,7 @@ commands:
           message: "${CIRCLE_USERNAME:Bot}'s build (#${CIRCLE_BUILD_NUM}) in ${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME} (${CIRCLE_BRANCH})"
           priority: 1 # high
           fail_only: true
-          only_for_branches: pushover-failed-notification
+          only_for_branches: master
 
 jobs:
   build:
@@ -48,7 +48,7 @@ jobs:
           command: bundle exec rake db:create db:schema:load --trace
       - run:
           name: Run Rails Best Practices
-          command: bundle exec rails_best_practices . && false
+          command: bundle exec rails_best_practices .
       - run:
           name: Run RuboCop
           command: bundle exec rubocop
