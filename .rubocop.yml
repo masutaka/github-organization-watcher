@@ -14,6 +14,7 @@ AllCops:
     - 'spec/rails_helper.rb'
     - 'spec/spec_helper.rb'
     - 'vendor/**/*'
+  NewCops: enable
   TargetRubyVersion: 2.6
 
 Capybara/FeatureMethods:
