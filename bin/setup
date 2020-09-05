@@ -25,7 +25,7 @@ FileUtils.chdir APP_ROOT do
   system! 'docker-compose build'
 
   puts "\n== Installing Ruby dependencies =="
-  system! 'docker-compose run --rm app bundle install'
+  system! 'docker-compose run --rm app bundle install --path=vendor/bundle'
 
   puts "\n== Preparing database =="
   system! 'docker-compose run --rm app rails db:setup'

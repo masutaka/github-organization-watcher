@@ -6,10 +6,11 @@ services:
     build: .
     volumes:
       - .:/app
-      - share:/usr/local/bundle
+      - bundle:/app/vendor/bundle
     ports:
       - 13000:3000
     environment:
+      BUNDLE_APP_CONFIG: /app/vendor/bundle
       RDB_URL_BASE: postgres://postgres:@rdb
       REDIS_URL: redis://redis:6379
       GITHUB_KEY: $GITHUB_KEY
@@ -34,6 +35,6 @@ services:
       - redis_data:/data
 
 volumes:
-  share:
+  bundle:
   postgres_data:
   redis_data:
