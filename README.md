@@ -26,13 +26,13 @@ Visit http://localhost:13000
 
 ## Test
 
-    $ docker-compose run --rm app rake spec
+    $ docker-compose run --rm app bundle exec rake spec
 
 ## Recommendation
 
 ### RuboCop
 
-    $ docker-compose run --rm app rubocop
+    $ docker-compose run --rm app bundle exec rubocop
 
 Also tests in CI.
 
@@ -40,7 +40,7 @@ Also tests in CI.
 
 You can check whether this is Rails Best Practices. Also tests in CI.
 
-    $ docker-compose run --rm app rails_best_practices .
+    $ docker-compose run --rm app bundle exec rails_best_practices .
 
 ## Heroku
 
