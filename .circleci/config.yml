@@ -17,7 +17,7 @@ commands:
 jobs:
   build:
     docker:
-      - image: cimg/ruby:2.7.1-node
+      - image: cimg/ruby:2.7.2-node
         environment:
           RDB_URL_BASE: postgres://postgres:@localhost
           REDIS_URL: redis://localhost:6379
