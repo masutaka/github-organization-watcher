@@ -1,4 +1,4 @@
-FROM ruby:2.7.2-alpine
+FROM ruby:3.0.0-alpine
 LABEL maintainer "masutaka.net@gmail.com"
 
 ENV BUILD_DEPENDENCIES="build-base postgresql-dev"
