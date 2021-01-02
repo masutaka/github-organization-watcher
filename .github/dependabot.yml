@@ -6,7 +6,7 @@ updates:
     interval: monthly
     time: "19:00"
     timezone: Asia/Tokyo
-  open-pull-requests-limit: 10
+  open-pull-requests-limit: 30
 - package-ecosystem: docker
   directory: "/"
   schedule:
