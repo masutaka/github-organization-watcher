@@ -1,17 +1,7 @@
 version: 2.1
 
 orbs:
-  pushover: masutaka/pushover@dev:beta5
-
-commands:
-  # pushover
-  notify_on_failure_on_default_branch:
-    steps:
-      - pushover/notify-on-failure:
-          title: "Failed: ${CIRCLE_PROJECT_REPONAME}'s job (${CIRCLE_JOB})"
-          message: "failed ${CIRCLE_USERNAME:Bot}'s build (#${CIRCLE_BUILD_NUM}) in ${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME} (${CIRCLE_BRANCH})"
-          priority: 1 # high
-          only_for_branches: master
+  pushover: masutaka/pushover@dev:beta6
 
 jobs:
   build:
@@ -56,4 +46,4 @@ jobs:
           command: bundle exec rspec --format progress --format RspecJunitFormatter -o test-reports/junit.xml
       - store_test_results:
           path: test-reports/
-      - notify_on_failure_on_default_branch
+      - pushover/notify-on-failure
