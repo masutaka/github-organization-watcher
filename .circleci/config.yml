@@ -3,8 +3,8 @@ version: 2.1
 orbs:
   pushover: masutaka/pushover@dev:beta6
 
-jobs:
-  build:
+executors:
+  app:
     docker:
       - image: cimg/ruby:2.7.2-node
         environment:
@@ -15,8 +15,10 @@ jobs:
           POSTGRES_HOST_AUTH_METHOD: trust
       - image: redis:4.0-alpine
     working_directory: ~/repo
+
+commands:
+  bundle_install:
     steps:
-      - checkout
       - restore_cache:
           name: Restore bundler cache
           keys:
@@ -32,18 +34,40 @@ jobs:
           key: gems-{{ .Environment.COMMON_CACHE_KEY }}-{{ checksum "Gemfile.lock" }}
           paths:
             - ~/repo/vendor/bundle
-      - run:
-          name: Create DB
-          command: bundle exec rake db:create db:schema:load --trace
-      - run:
-          name: Run Rails Best Practices
-          command: bundle exec rails_best_practices .
+  rubocop:
+    steps:
       - run:
           name: Run RuboCop
           command: bundle exec rubocop
+  rails_best_practices:
+    steps:
+      - run:
+          name: Run Rails Best Practices
+          command: bundle exec rails_best_practices .
+  rspec:
+    steps:
+      - run:
+          name: Create DB
+          command: bundle exec rake db:create db:schema:load --trace
       - run:
           name: Run Tests
           command: bundle exec rspec --format progress --format RspecJunitFormatter -o test-reports/junit.xml
       - store_test_results:
           path: test-reports/
+
+jobs:
+  build:
+    executor: app
+    steps:
+      - checkout
+      - bundle_install
+      - rubocop
+      - rails_best_practices
+      - rspec
       - pushover/notify-on-failure
+
+workflows:
+  version: 2
+  ordinary:
+    jobs:
+      - build
